@@ -1,0 +1,248 @@
+body {
+    margin: 0;
+    font-size: 15px;
+}
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+.container_1 {
+    width: 100%;
+    max-width: 1170px;
+    margin: 0 auto;
+}
+
+/*--Header-- */
+
+.header_inner {
+    text-align: center;
+}
+
+.header_text {
+
+    font-size: 35px;
+    text-align: center;
+    margin: 29px 0 32px 0;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 500;
+}
+
+.header_logo {
+    user-select: none;
+    width: 230px;
+    margin-bottom: 29px;
+    margin-top: 18px;
+}
+
+/* --Navigation-- */
+
+.nav {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.nav_link {
+    text-decoration: none;
+    font-family: 'Manrope', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    display: inline-block;
+    padding: 0 48px 0 48px;
+    opacity: 0.75;
+    color: black;
+    transition: opacity .1s linear;
+}
+
+.nav_link_2 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    display: inline-block;
+    padding: 0 48px 0 48px;
+    opacity: 0.75;
+    color: #cc7a00;
+    text-decoration: underline #cc7a00 1px;
+    transition: opacity .1s linear;
+}
+
+.nav_link:hover {
+    color: #cc7a00;
+    transition: 0.5s;
+    text-decoration: underline #cc7a00 1px;
+}
+
+.pre_logo {
+    margin-top: 30px;
+    width: 1170px;
+    border-bottom: 15px solid #cc8100;
+    border-right: 15px solid rgba(255, 255, 255, 0);
+    /* border-left: 15px solid rgba(255, 255, 255, 0); */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logo {
+    text-align: center;
+    width: 1170px;
+    height: 38px;
+    background-color: #cc8100;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logo_text {
+    cursor: default;
+    text-transform: uppercase;
+    margin-top: 0px;
+    font-size: 18px;
+    text-align: center;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 500;
+    color: #fff;
+}
+
+.basic_inner {
+    background-color: #cc8100;
+    margin-top: 0;
+    height: 300px;
+    margin-bottom: 148px;
+}
+
+.block_1 {
+    height: 205px;
+    margin: 0 7px 0 7px;
+    width: 100%;
+    text-align: left;
+    position: relative;
+}
+
+.block_title {
+    cursor: default;
+    margin: 0 0 15px 24px;
+    padding-top: 20px;
+    font-size: 30px;
+    text-align: left;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 300;
+    color: #fff;
+}
+
+.block_text {
+    cursor: default;
+    margin: 0 0 15px 24px;
+    font-size: 17px;
+    text-align: left;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 300;
+    color: #fff;
+}
+
+.block_2 {
+    height: 40px;
+    margin: 0 7px 61px 7px;
+    width: 22%;
+    text-align: left;
+    position: relative;
+}
+
+.goto {
+    display: flex;
+    height: 45px;
+}
+
+button {
+    text-transform: uppercase;
+    margin: 15px 5px 0px 25px;
+    padding: 1px 35px;
+    background-color: black;
+    border: none;
+    height: 24px;
+    color: white;
+    font-size: 16px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+} 
+
+button:hover {
+    color: black;
+    cursor: pointer;
+    background-color: white;
+    transition: 0.08s linear;
+}
+
+
+.footer {
+    margin-top: 30px;
+}
+
+.footer_img {
+    user-select: none;
+    height: 540px;
+    margin-top: -1px;
+    background: url(../img/nuke_4.jpg);
+}
+
+.footer_inner {
+    display: flex;
+}
+
+.footer_title_text {
+    text-transform: uppercase;
+    cursor: default;
+    width: 287px;
+    display: flex;
+    justify-content: left;
+    font-size: 22px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 600;
+    margin-bottom: 15px;
+    margin-left: 15px;
+    color: #fff;
+    background-color: #cc7a00;
+    margin-left: 5px;
+    padding-left: 5px;
+}
+
+.footer_main_text {
+    text-decoration: none;
+    color: black;
+    width: 210px;
+    display: flex;
+    justify-content: left;
+    font-size: 17px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+    margin-bottom: 7px;
+    margin-top: 7px;
+    margin-left: 17px;
+}
+
+.footer_main_text:hover {
+    color: #cc7a00;
+    transition: 0.7s;
+    cursor: pointer;
+}
+
+.footer_block {
+    margin-top: 10px;
+    padding-top: 18px;
+    height: 300px;
+    width: 60%;
+}
+
+.block_2_img {
+    user-select: none;
+    margin-top: 4px;
+    margin-left: 109px;
+    padding: 0px 0px;
+    height: 285px;
+    opacity: 50%;
+}
+
+.footer_block_2 {
+    margin-top: 10px;
+    padding-top: 11px;
+    height: 300px;
+    width: 40%;
+}
