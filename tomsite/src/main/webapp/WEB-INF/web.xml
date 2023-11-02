@@ -8,7 +8,7 @@
 
     <servlet>
         <servlet-name>addBucket</servlet-name>
-        <servlet-class>servlets.Bucket.AddBucketServlet</servlet-class>
+        <servlet-class>servlets.bucket.AddBucketServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -19,7 +19,7 @@
 
     <servlet>
         <servlet-name>exitPage</servlet-name>
-        <servlet-class>servlets.ExitServlet</servlet-class>
+        <servlet-class>servlets.other.ExitServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>

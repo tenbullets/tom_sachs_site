@@ -1,8 +1,7 @@
-package servlets;
+package servlets.other;
 
 import interfaces.BucketCookie;
 import repository.BucketCookieJdbc;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import java.io.IOException;

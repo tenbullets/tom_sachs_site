@@ -3,7 +3,10 @@ package repository;
 import interfaces.UsersRepository;
 import models.User;
 import models.UsersListDTO;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,20 +16,21 @@ import java.util.List;
 import java.util.Objects;
 
 public class UsersRepositoryJdbcImpl implements UsersRepository {
+    private final DataSource dataSource;
+    private final PasswordEncoder passwordEncoder;
 
-    private final Connection connection;
-    private final Statement statement;
     private static final String USERS = "select * from users_2";
     private static final String UUID = "select * from uuid_2";
 
-    public UsersRepositoryJdbcImpl(Connection connection, Statement statement) {
-        this.statement = statement;
-        this.connection = connection;
+    public UsersRepositoryJdbcImpl(DataSource dataSource) {
+        this.dataSource = dataSource;
+        this.passwordEncoder = new BCryptPasswordEncoder();
     }
 
     @Override
     public List allUsers() {
         try {
+            Connection connection = dataSource.getConnection();
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(USERS);
             List<UsersListDTO> result = new ArrayList<>();
@@ -37,9 +41,8 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
                         .email(resultSet.getString("email"))
                         .role(resultSet.getString("role"))
                         .build();
-                if (!user.getRole().equals("admin")) {
-                    result.add(user);
-                }
+
+                if (!user.getRole().equals("admin")) result.add(user);
             }
             return result;
         } catch (SQLException e) {
@@ -50,6 +53,7 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     @Override
     public List allAdmins() {
         try {
+            Connection connection = dataSource.getConnection();
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(USERS);
             List<UsersListDTO> result = new ArrayList<>();
@@ -60,9 +64,8 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
                         .email(resultSet.getString("email"))
                         .role(resultSet.getString("role"))
                         .build();
-                if (user.getRole().equals("admin")) {
-                    result.add(user);
-                }
+
+                if (user.getRole().equals("admin")) result.add(user);
             }
             return result;
         } catch (SQLException e) {
@@ -73,6 +76,7 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     @Override
     public boolean findUser(String username, String password) {
         try {
+            Connection connection = dataSource.getConnection();
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(USERS);
 
@@ -81,9 +85,9 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
                         .username(resultSet.getString("username"))
                         .password(resultSet.getString("password"))
                         .build();
-                if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
-                    return true;
-                }
+
+                if (user.getUsername().equals(username) &&
+                        passwordEncoder.matches(password, user.getPassword())) return true;
             }
             return false;
         } catch (SQLException e) {
@@ -94,6 +98,7 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     @Override
     public boolean findUserByEmail(String email) {
         try {
+            Connection connection = dataSource.getConnection();
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(USERS);
 
@@ -101,9 +106,8 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
                 User user = User.builder()
                         .email((resultSet.getString("email")))
                         .build();
-                if (user.getEmail().equals(email)) {
-                    return true;
-                }
+
+                if (user.getEmail().equals(email)) return true;
             }
             return false;
         } catch (SQLException e) {
@@ -112,7 +116,8 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     }
 
     @Override
-    public String findUserByUuid(String uuid) {
+    public String findUserByUuid(String uuid) throws SQLException {
+        Connection connection = dataSource.getConnection();
         try (Statement statement = connection.createStatement()) {
 
             User copy = null;
@@ -122,9 +127,8 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
                         .id(uuidDb.getString("user_id"))
                         .uuid(uuidDb.getString("uuid"))
                         .build();
-                if(user.getUuid().equals(uuid)) {
-                    copy = user;
-                }
+
+                if(user.getUuid().equals(uuid)) copy = user;
             }
 
             ResultSet usersDb = statement.executeQuery(USERS);
@@ -134,11 +138,9 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
                         .username(usersDb.getString("username"))
                         .build();
                 assert copy != null;
-                if(Objects.equals(copy.getId(), user.getId())) {
-                    return user.getUsername();
-                }
-            }
 
+                if(Objects.equals(copy.getId(), user.getId())) return user.getUsername();
+            }
             return "0";
         } catch (SQLException e) {
             throw new IllegalStateException(e);
@@ -146,7 +148,8 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     }
 
     @Override
-    public String returnUuid(String username) {
+    public String returnUuid(String username) throws SQLException {
+        Connection connection = dataSource.getConnection();
         try (Statement statement = connection.createStatement()){
 
             User copy = null;
@@ -156,9 +159,8 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
                         .id(usersDb.getString("user_id"))
                         .username(usersDb.getString("username"))
                         .build();
-                if(user.getUsername().equals(username)) {
-                    copy = user;
-                }
+
+                if(user.getUsername().equals(username)) copy = user;
             }
 
             ResultSet uuidDb = statement.executeQuery(UUID);
@@ -168,11 +170,9 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
                         .uuid(uuidDb.getString("uuid"))
                         .build();
                 assert copy != null;
-                if(Objects.equals(copy.getId(), user.getId())) {
-                    return user.getUuid();
-                }
-            }
 
+                if(Objects.equals(copy.getId(), user.getId())) return user.getUuid();
+            }
             return "0";
         } catch (SQLException e) {
             throw new IllegalStateException(e);
@@ -180,7 +180,8 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     }
 
     @Override
-    public boolean findUserByName(String username) {
+    public boolean findUserByName(String username) throws SQLException {
+        Connection connection = dataSource.getConnection();
         try {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(USERS);
@@ -189,9 +190,8 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
                 User user = User.builder()
                         .username(resultSet.getString("username"))
                         .build();
-                if (user.getUsername().equals(username)){
-                    return true;
-                }
+
+                if (user.getUsername().equals(username)) return true;
             }
             return false;
         } catch (SQLException e) {
@@ -202,6 +202,7 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     @Override
     public String returnEmail(String username) {
         try {
+            Connection connection = dataSource.getConnection();
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(USERS);
 
@@ -210,9 +211,8 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
                         .username(resultSet.getString("username"))
                         .email(resultSet.getString("email"))
                         .build();
-                if (user.getUsername().equals(username)){
-                    return user.getEmail();
-                }
+
+                if (user.getUsername().equals(username)) return user.getEmail();
             }
             return null;
         } catch (SQLException e) {
@@ -221,19 +221,21 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     }
 
     @Override
-    public boolean isAdmin(String username, String role) {
+    public boolean isAdmin(String username, String password) {
         try {
+            Connection connection = dataSource.getConnection();
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(USERS);
 
             while (resultSet.next()) {
                 User user = User.builder()
                         .username(resultSet.getString("username"))
+                        .password(resultSet.getString("password"))
                         .role(resultSet.getString("role"))
                         .build();
-                if (user.getUsername().equals(username) && user.getRole().equals("admin")){
-                    return true;
-                }
+
+                if (user.getUsername().equals(username) && passwordEncoder.matches(password, user.getPassword())
+                        && user.getRole().equals("admin")) return true;
             }
             return false;
         } catch (SQLException e) {
@@ -244,6 +246,7 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     @Override
     public String returnId(String username) {
         try {
+            Connection connection = dataSource.getConnection();
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(USERS);
 
@@ -252,9 +255,8 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
                         .username(resultSet.getString("username"))
                         .id(resultSet.getString("user_id"))
                         .build();
-                if (user.getUsername().equals(username)){
-                    return user.getId();
-                }
+
+                if (user.getUsername().equals(username)) return user.getId();
             }
             return null;
         } catch (SQLException e) {

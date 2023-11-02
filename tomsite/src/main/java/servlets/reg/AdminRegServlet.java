@@ -1,48 +1,30 @@
 package servlets.reg;
 
-
 import interfaces.UsersRepository;
 import repository.DataRepositoryJdbc;
-import repository.UsersRepositoryJdbcImpl;
-
+import repository.SignUpServiceImpl;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
+
 
 
 @WebServlet("/adminReg")
 public class AdminRegServlet extends HttpServlet {
-
-    private static final String DB_USER = "postgres";
-    private static final String DB_PASSWORD = "qwikWell12";
-    private static final String DB_URL = "jdbc:postgresql://localhost:5432/test";
-    private static final java.util.UUID UUID = null;
     private UsersRepository usersRepository;
     private DataRepositoryJdbc data;
+    SignUpServiceImpl signUpServiceImpl;
 
     @Override
-    public void init() throws ServletException {
-        try {
-            Class.forName("org.postgresql.Driver");
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-
-        try {
-            Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-            Statement statement = connection.createStatement();
-            usersRepository = new UsersRepositoryJdbcImpl(connection, statement);
-            data = new DataRepositoryJdbc(connection, statement);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+    public void init(ServletConfig config) throws ServletException {
+        usersRepository = (UsersRepository) config.getServletContext().getAttribute("userRep");
+        data = (DataRepositoryJdbc) config.getServletContext().getAttribute("dataRep");
+        signUpServiceImpl = new SignUpServiceImpl(data);
     }
 
     @Override
@@ -58,12 +40,10 @@ public class AdminRegServlet extends HttpServlet {
         String secondPassword = request.getParameter("second_password");
         String code = request.getParameter("code");
 
-        String result;
-        String status;
+        String result, status;
 
         if (usersRepository.findUserByEmail(email)) {
-            result = "Админ с почтой " + email + " уже зарегестрирован";
-            status = "Регестрация провалена";
+            result = "Админ с почтой " + email + " уже зарегестрирован"; status = "Регестрация провалена";
 
             request.setAttribute("resultOfAut", result);
             request.setAttribute("status", status);
@@ -72,15 +52,19 @@ public class AdminRegServlet extends HttpServlet {
 
         if(code.equals("1234")) {
             if (!password.isEmpty() && !username.isEmpty() && password.equals(secondPassword) && !email.isEmpty()) {
-                String uniqueID = UUID.randomUUID().toString();
-                data.adminSave(username, email, password, uniqueID);
+                String uniqueID = java.util.UUID.randomUUID().toString();
+
+                try {
+                    signUpServiceImpl.adminSignUp(username, email, password, uniqueID);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
 
                 request.setAttribute("adminName", username);
                 request.setAttribute("adminEmail", email);
                 request.getRequestDispatcher("/jsp/service.jsp").forward(request, response);
             } else {
-                result = "Проверте введенные данные";
-                status = "Регестрация провалена";
+                result = "Проверте введенные данные"; status = "Регестрация провалена";
 
                 request.setAttribute("resultOfAut", result);
                 request.setAttribute("status", status);
@@ -88,8 +72,7 @@ public class AdminRegServlet extends HttpServlet {
             }
 
         } else {
-            result = "В предоставлении прав отказано, неверный код идентификации";
-            status = "Регестрация провалена";
+            result = "В предоставлении прав отказано, неверный код идентификации"; status = "Регестрация провалена";
 
             request.setAttribute("resultOfAut", result);
             request.setAttribute("status", status);

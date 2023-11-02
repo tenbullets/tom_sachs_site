@@ -8,6 +8,21 @@
   <name>tomsite Maven Webapp</name>
   <url>https://maven.apache.org</url>
   <dependencies>
+
+
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-core</artifactId>
+      <version>5.4.1</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jdbc</artifactId>
+      <version>5.2.9.RELEASE</version>
+    </dependency>
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -43,7 +58,19 @@
       <version>1.2</version>
     </dependency>
 
+<!--    &lt;!&ndash; ... other dependency elements ... &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.security</groupId>-->
+<!--      <artifactId>spring-security-bom</artifactId>-->
+<!--      <type>pom</type>-->
+<!--      <scope>import</scope>-->
+<!--    </dependency>-->
+
   </dependencies>
+
+
+
+
 
   <build>
     <finalName>tomsite</finalName>

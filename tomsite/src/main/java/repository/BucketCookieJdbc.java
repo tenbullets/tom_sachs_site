@@ -20,9 +20,7 @@ public class BucketCookieJdbc implements BucketCookie {
     @Override
     public String getProd(Cookie[] cookie) {
         for (Cookie value : cookie) {
-            if (value.getName().equals("prod")) {
-                return value.getValue();
-            }
+            if (value.getName().equals("prod")) return value.getValue();
         }
         return null;
     }
@@ -33,9 +31,8 @@ public class BucketCookieJdbc implements BucketCookie {
         for (char element : products.toCharArray()){
             if (element == '_') count++;
         }
-        if(products.charAt(0) == '_') {
-            return count;
-        }
+        if(products.charAt(0) == '_') return count;
+
         return count + 1;
     }
 
@@ -50,9 +47,7 @@ public class BucketCookieJdbc implements BucketCookie {
 
         StringBuilder result = new StringBuilder();
         for (String product : products) {
-            if (!product.isEmpty()) {
-                result.append("_").append(product);
-            }
+            if (!product.isEmpty()) result.append("_").append(product);
         }
         return result.toString();
     }
@@ -60,9 +55,7 @@ public class BucketCookieJdbc implements BucketCookie {
     @Override
     public String getCount(Cookie[] cookie) {
         for (Cookie value : cookie) {
-            if (value.getName().equals("count")) {
-                return value.getValue();
-            }
+            if (value.getName().equals("count")) return value.getValue();
         }
         return null;
     }

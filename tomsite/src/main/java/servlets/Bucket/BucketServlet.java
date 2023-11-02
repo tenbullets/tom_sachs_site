@@ -1,4 +1,4 @@
-package servlets.Bucket;
+package servlets.bucket;
 
 import interfaces.BucketCookie;
 import repository.BucketCookieJdbc;

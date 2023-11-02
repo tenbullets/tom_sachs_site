@@ -1,4 +1,4 @@
-package servlets;
+package servlets.store;
 
 import models.Product;
 import repository.StoreRepository;
@@ -23,9 +23,8 @@ public class GotoProdServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name, price, description, img, tag;
 
-        String pr = request.getParameter("htmlContent");
-
-        Product product = storeRepository.getProduct(pr);
+        String productTag = request.getParameter("htmlContent");
+        Product product = storeRepository.getProduct(productTag);
 
         name = product.getName();
         price = product.getPrice();

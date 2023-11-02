@@ -1,4 +1,4 @@
-package servlets.Bucket;
+package servlets.bucket;
 
 import models.Product;
 import interfaces.BucketCookie;

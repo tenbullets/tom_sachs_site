@@ -1,11 +1,13 @@
 package interfaces;
 
+import models.User;
+
 import javax.servlet.http.HttpServletResponse;
 
 public interface DataRepository {
-    void userSave(String username, String email, String password, String uuid);
+    void adminSave(User user);
+    void userSave(User user);
+    void delUser(String id);
     void addUUIDCookie(String uuid, HttpServletResponse response);
     void addCookie(String name, String value, HttpServletResponse response);
-    void adminSave(String username, String email, String password, String uuid);
-    void delUser(String id);
 }

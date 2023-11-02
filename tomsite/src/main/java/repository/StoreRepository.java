@@ -1,8 +1,10 @@
 package repository;
+
 import interfaces.UsingStore;
 import models.Product;
-
 import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.HashMap;
 
 public class StoreRepository implements UsingStore {
@@ -32,7 +34,7 @@ public class StoreRepository implements UsingStore {
 
     public HashMap<String, String> getData(String filename) throws IOException {
         File txt = new File("C:\\Users\\MSI\\Desktop\\tomsite\\src\\main\\java\\store_data\\" + filename +".txt");
-        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(txt), "UTF8"));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(Files.newInputStream(txt.toPath()), StandardCharsets.UTF_8));
         String[] tags = {"bag", "pers", "lander", "ipad", "spaceships", "nsstee", "note", "nsptee", "fpack", "yard", "nut"};
         HashMap<String, String> data = new HashMap<>();
 
@@ -45,6 +47,6 @@ public class StoreRepository implements UsingStore {
         reader.close();
 
         return data;
-    };
+    }
 
 }

@@ -2,8 +2,9 @@ package servlets.reg;
 
 import interfaces.UsersRepository;
 import repository.DataRepositoryJdbc;
-import repository.UsersRepositoryJdbcImpl;
+import repository.SignUpServiceImpl;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
@@ -12,29 +13,15 @@ import java.sql.*;
 
 @WebServlet("/reg")
 public class RegServlet extends HttpServlet {
-    private static final String DB_USER = "postgres";
-    private static final String DB_PASSWORD = "qwikWell12";
-    private static final String DB_URL = "jdbc:postgresql://localhost:5432/test";
-    private static final java.util.UUID UUID = null;
     private UsersRepository usersRepository;
     private DataRepositoryJdbc data;
+    SignUpServiceImpl signUpServiceImpl;
 
     @Override
-    public void init() throws ServletException {
-        try {
-            Class.forName("org.postgresql.Driver");
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-
-        try {
-            Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-            Statement statement = connection.createStatement();
-            usersRepository = new UsersRepositoryJdbcImpl(connection, statement);
-            data = new DataRepositoryJdbc(connection, statement);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+    public void init(ServletConfig config) throws ServletException {
+        usersRepository = (UsersRepository) config.getServletContext().getAttribute("userRep");
+        data = (DataRepositoryJdbc) config.getServletContext().getAttribute("dataRep");
+        signUpServiceImpl = new SignUpServiceImpl(data);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -44,21 +31,26 @@ public class RegServlet extends HttpServlet {
         String secondPassword = request.getParameter("second_password");
 
         HttpSession httpSession = request.getSession(true);
+        httpSession.setAttribute("isAdmin", false);
+        httpSession.setAttribute("authenticated", false);
 
-        String result;
-        String status;
+        String result, status;
 
         if (usersRepository.findUserByEmail(email)) {
-            result = "Пользователь с почтой " + email + " уже зарегестрирован";
-            status = "Регестрация провалена";
+            result = "Пользователь с почтой " + email + " уже зарегестрирован"; status = "Регестрация провалена";
 
             request.setAttribute("resultOfAut", result);
             request.setAttribute("status", status);
             request.getRequestDispatcher("/jsp/result.jsp").forward(request, response);
         } else {
-            if (!password.isEmpty() && !username.isEmpty() && password.equals(secondPassword) && !email.isEmpty()) {
-                String uniqueID = UUID.randomUUID().toString();
-                data.userSave(username, email, password, uniqueID);
+            if (formIsOk(username, email, password, secondPassword)) {
+                String uniqueID = java.util.UUID.randomUUID().toString();
+
+                try {
+                    signUpServiceImpl.signUp(username, email, password, uniqueID);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
 
                 httpSession.setAttribute("authenticated", true);
                 httpSession.setAttribute("username", username);
@@ -67,16 +59,17 @@ public class RegServlet extends HttpServlet {
                 request.setAttribute("user_email", email);
                 request.getRequestDispatcher("/jsp/account.jsp").forward(request, response);
             } else {
-                result = "Пользователь не зарегестрирован";
-                status = "Регестрация провалена";
+                result = "Пользователь не зарегестрирован"; status = "Регестрация провалена";
 
                 request.setAttribute("resultOfAut", result);
                 request.setAttribute("status", status);
                 request.getRequestDispatcher("/jsp/result.jsp").forward(request, response);
             }
         }
+    }
 
-
+    public boolean formIsOk(String username, String email, String password, String secondPassword) {
+        return !password.isEmpty() && !username.isEmpty() && password.equals(secondPassword) && !email.isEmpty();
     }
 
 }
