@@ -9,3 +9,4 @@ img/store_main/sp_1.jpg
 img/store_main/fpack_1.jpg
 img/store_main/yard_2.jpg
 img/store_main/nut_1.jpg
+img/store_main/lunlamp_1.jpg

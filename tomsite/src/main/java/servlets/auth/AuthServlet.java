@@ -1,4 +1,4 @@
-package servlets.aut;
+package servlets.auth;
 
 import interfaces.UsersRepository;
 

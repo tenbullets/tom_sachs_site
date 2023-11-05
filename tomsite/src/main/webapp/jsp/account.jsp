@@ -24,7 +24,7 @@
         <nav class="nav" id="nav">
             <a class="nav_link" href="exhibitions.html" data-scroll="#">Выставки</a>
             <a class="nav_link" href="bio.html" data-scroll="#">Биография</a>
-            <a class="nav_link" href="store.html"  data-scroll="#">Магазин</a>
+            <a class="nav_link" href="jsp/store.jsp" data-scroll="#">Магазин</a>
             <a class="nav_link" href="contacts.html" data-scroll="#">Контакты</a>
             <a class="nav_link_2" href="log_or_reg.html" data-scroll="#">Аккаунт</a>
         </nav>
@@ -52,7 +52,7 @@
                     <% String email = (String) request.getAttribute("user_email");%>
                     <h2 class="email"><%=email%></h2>
 
-                    <a class="goto" href="store.html"  data-scroll="#">Магазин</a>
+                    <a class="goto" href="jsp/store.jsp" data-scroll="#">Магазин</a>
 
                     <form action="bucketPage" method="POST">
                         <button class="goto">Корзина (${cookie.get("count").value})</button>

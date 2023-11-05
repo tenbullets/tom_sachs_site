@@ -24,7 +24,7 @@ public class DelUserServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
         try {
             if (usersRepository.findUserByName(username)) data.delUser(usersRepository.returnId(username));
@@ -32,6 +32,7 @@ public class DelUserServlet extends HttpServlet {
             throw new RuntimeException(e);
         }
         request.getRequestDispatcher("/users").forward(request, response);
+
     }
 
 }

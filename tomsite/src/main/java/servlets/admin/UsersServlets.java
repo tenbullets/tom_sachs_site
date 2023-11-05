@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/users")
 public class UsersServlets extends HttpServlet {
     private UsersRepository usersRepository;
 
@@ -19,8 +18,9 @@ public class UsersServlets extends HttpServlet {
         usersRepository = (UsersRepository) config.getServletContext().getAttribute("userRep");
     }
 
+
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List users, admins;
         try {
             users = usersRepository.allUsers();

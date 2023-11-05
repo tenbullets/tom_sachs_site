@@ -5,10 +5,15 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.annotation.WebListener;
 import interfaces.SignUpService;
 import interfaces.UsersRepository;
+import models.Product;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import repository.DataRepositoryJdbc;
 import repository.SignUpServiceImpl;
+import repository.StoreRepository;
 import repository.UsersRepositoryJdbcImpl;
+
+import java.io.IOException;
+import java.util.List;
 
 @WebListener
 public class ServletContextListener implements javax.servlet.ServletContextListener {
@@ -20,6 +25,13 @@ public class ServletContextListener implements javax.servlet.ServletContextListe
 
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
+        StoreRepository storeRepository = new StoreRepository();
+        List<Product> products;
+        try {
+            products = storeRepository.getAllProduct();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         ServletContext servletContext = servletContextEvent.getServletContext();
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
 
@@ -36,6 +48,8 @@ public class ServletContextListener implements javax.servlet.ServletContextListe
 
         SignUpService signUpService = new SignUpServiceImpl(dataRepository);
         servletContext.setAttribute("signUpService", signUpService);
+
+        servletContext.setAttribute("products", products);
      }
 
     @Override

@@ -1,16 +1,18 @@
 package filters;
 
+import interfaces.UsersRepository;
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-public class AuthFilter implements Filter {
+public class UserTypeFilter implements Filter {
+    private UsersRepository usersRepository;
 
     @Override
     public void init(FilterConfig config) throws ServletException {
-
+        usersRepository = (UsersRepository) config.getServletContext().getAttribute("userRep");
     }
 
     @Override
@@ -20,39 +22,44 @@ public class AuthFilter implements Filter {
 
         HttpSession session = request.getSession();
 
+        Boolean isAdmin = false;
         Boolean isAuthenticated = false;
         Boolean sessionExists = session != null;
 
         Boolean isLoginPage = request.getRequestURI().equals("/tomsite_war/introAuth");
-        Boolean isRegPage = request.getRequestURI().equals("/tomsite_war/introReg");
-        Boolean isExitPage = request.getRequestURI().equals("/tomsite_war/exitPage");
-        Boolean isBasketPage = request.getRequestURI().equals("/tomsite_war/addBucket");
+        Boolean isUsersPage = request.getRequestURI().equals("/tomsite_war/users");
+        Boolean isAddAdminPage = request.getRequestURI().equals("/tomsite_war/addAdmin");
 
 
         if (sessionExists) {
             isAuthenticated = (Boolean) session.getAttribute("authenticated");
             if (isAuthenticated == null) isAuthenticated = false;
+            isAdmin = (Boolean) session.getAttribute("isAdmin");
+            if (isAdmin == null) isAdmin = false;
         }
 
-        if (isRegPage) filterChain.doFilter(request, response);
-        if (isExitPage) filterChain.doFilter(request, response);
-
-        if (!isAuthenticated && isLoginPage) {
+        if (!isAuthenticated && !isAdmin && isLoginPage) {
             filterChain.doFilter(request, response);
-        } else if (isAuthenticated && isLoginPage) {
-            request.getRequestDispatcher("/goToLog").forward(request, response);
         }
 
-        if (isBasketPage && !isAuthenticated) {
-            String result = "Прежде чем совершать покупки, войдите или зарегестрируйтесь. Для этого перейдите в раздел «Аккаунт».";
-            String status = "Вы не вошли";
+        if (isAdmin && isLoginPage) {
+            String username = (String) session.getAttribute("username");
+            request.setAttribute("adminName", username);
+            request.setAttribute("adminEmail", usersRepository.returnEmail(username));
+            request.getRequestDispatcher("/jsp/service.jsp").forward(request, response);
+        }
+
+        if (!isAdmin && (isUsersPage || isAddAdminPage)) {
+            String result = "Вы не обладаете правами админа";
+            String status = "Провалено";
 
             request.setAttribute("resultOfAut", result);
             request.setAttribute("status", status);
             request.getRequestDispatcher("/jsp/result.jsp").forward(request, response);
-        } else if (isBasketPage && isAuthenticated) {
+        } else if (isAdmin && (isUsersPage || isAddAdminPage)) {
             filterChain.doFilter(request, response);
         }
+
     }
 
     @Override

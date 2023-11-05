@@ -24,7 +24,7 @@
         <nav class="nav" id="nav">
             <a class="nav_link" href="exhibitions.html" data-scroll="#">Выставки</a>
             <a class="nav_link" href="bio.html" data-scroll="#">Биография</a>
-            <a class="nav_link" href="store.html"  data-scroll="#">Магазин</a>
+            <a class="nav_link" href="jsp/store.jsp" data-scroll="#">Магазин</a>
             <a class="nav_link" href="contacts.html" data-scroll="#">Контакты</a>
             <a class="nav_link" href="log_or_reg.html" data-scroll="#">Аккаунт</a>
         </nav>
@@ -51,16 +51,20 @@
                 <% String email = (String) request.getAttribute("adminEmail");%>
                 <h2 class="email"><%=email%></h2>
 
-                <form action="users" method="POST">
+                <form action="users" method="GET">
                     <button class="goto">Пользователи</button>
                 </form>
 
-                <form action="adminReg" method="GET">
+                <form action="addAdmin" method="GET">
                     <button class="goto">Предоставить доступ</button>
                 </form>
 
-                <form action="setProd" method="GET">
-                    <button class="goto">+ Товар</button>
+                <form action="allProd" method="GET">
+                    <button class="goto">Управление Товарами</button>
+                </form>
+
+                <form action="addProd" method="GET">
+                    <button class="goto">Добавить Товар</button>
                 </form>
 
                 <form action="exitPage" method="POST">

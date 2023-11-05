@@ -21,6 +21,7 @@ public class GotoProdServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("i work");
         String name, price, description, img, tag;
 
         String productTag = request.getParameter("htmlContent");

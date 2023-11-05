@@ -1,4 +1,4 @@
-package servlets.reg;
+package servlets.admin;
 
 import interfaces.UsersRepository;
 import repository.DataRepositoryJdbc;
@@ -13,8 +13,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 
-
-@WebServlet("/adminReg")
 public class AdminRegServlet extends HttpServlet {
     private UsersRepository usersRepository;
     private DataRepositoryJdbc data;
