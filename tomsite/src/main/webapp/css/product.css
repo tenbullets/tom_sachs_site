@@ -115,7 +115,6 @@ form {
 .block_1 {
     width: 40%;
     height: auto;
-    display: flex;
     padding-bottom: 130px;
 }
 
@@ -163,6 +162,22 @@ form {
     padding-left: 5px;
 }
 
+
+.count {
+    cursor: default;
+    font-size: 17px;
+    width: 23%;
+    height: 24px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 500;
+    background-color: #00000095;
+    margin: 10px 0 10px 5px;
+
+    padding-top: 0;
+    color: #fff;
+    padding-left: 5px;
+}
+
 button {
     text-transform: uppercase;
     margin: 12px 5px 0px 5px;
@@ -175,6 +190,7 @@ button {
     font-size: 16px;
     font-family: 'Manrope', sans-serif;
     font-weight: 400;
+    width: 175px;
 }
 
 button:hover {
@@ -190,6 +206,7 @@ button:hover {
     background-color: black;
     border: none;
     height: 24px;
+    width: 175px;
 
     color: #fff;
     font-size: 16px;
@@ -215,7 +232,6 @@ button:hover {
 }
 
 
-
 .footer {
     margin-top: 30px;
 }
@@ -224,7 +240,7 @@ button:hover {
     user-select: none;
     height: 540px;
     margin-top: -1px;
-    background: url(../img/nuke_4.jpg);
+    background: url(../img/other/nuke_4.jpg);
 }
 
 .footer_inner {
@@ -237,11 +253,10 @@ button:hover {
     width: 287px;
     display: flex;
     justify-content: left;
-    font-size: 22px;
+    font-size: 20px;
     font-family: 'Manrope', sans-serif;
     font-weight: 600;
     margin-bottom: 15px;
-    margin-left: 15px;
     color: #fff;
     background-color: #cc7a00;
     margin-left: 5px;
@@ -254,7 +269,7 @@ button:hover {
     width: 210px;
     display: flex;
     justify-content: left;
-    font-size: 17px;
+    font-size: 16px;
     font-family: 'Manrope', sans-serif;
     font-weight: 400;
     margin-bottom: 7px;
@@ -271,22 +286,91 @@ button:hover {
 .footer_block {
     margin-top: 10px;
     padding-top: 18px;
-    height: 300px;
-    width: 30%;
+    height: 250px;
+    width: 60%;
 }
 
 .block_2_img {
     user-select: none;
-    margin-top: 4px;
-    margin-left: 109px;
+    margin-top: 10px;
+    margin-left: 202px;
     padding: 0px 0px;
-    height: 285px;
+    height: 219px;
     opacity: 50%;
 }
 
 .footer_block_2 {
     margin-top: 10px;
     padding-top: 11px;
-    height: 300px;
+    height: 250px;
     width: 40%;
 }
+
+
+.slider-container {
+    position: relative;
+    width: 395px;
+    height: 316px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 12px;
+    display: block;
+
+
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+
+
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.prev-button,
+.next-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 42px;
+    height: 42px;
+    margin: 0;
+    padding: 0;
+
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    border-radius: 100%;
+
+    background-color: rgba(0, 0, 0, 0.095);
+}
+
+.prev-button {
+    left: 10px;
+}
+
+.next-button {
+    right: 10px;
+}
+
+.next-button:hover {
+    background-color: rgba(0, 0, 0, 0.156);
+    transition: 0.09s linear;
+}
+
+.prev-button:hover {
+    background-color: rgba(0, 0, 0, 0.156);
+    transition: 0.09s linear;
+}
+

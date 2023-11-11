@@ -25,13 +25,7 @@ public class ServletContextListener implements javax.servlet.ServletContextListe
 
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
-        StoreRepository storeRepository = new StoreRepository();
-        List<Product> products;
-        try {
-            products = storeRepository.getAllProduct();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+
         ServletContext servletContext = servletContextEvent.getServletContext();
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
 
@@ -39,6 +33,15 @@ public class ServletContextListener implements javax.servlet.ServletContextListe
         dataSource.setUsername(DB_USER);
         dataSource.setPassword(DB_PASSWORD);
         dataSource.setUrl(DB_URL);
+
+        StoreRepository storeRepository = new StoreRepository(dataSource);
+        servletContext.setAttribute("storeRep", storeRepository);
+        List<Product> products;
+        try {
+            products = storeRepository.getAllProduct();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
         UsersRepository usersRepository = new UsersRepositoryJdbcImpl(dataSource);
         servletContext.setAttribute("userRep", usersRepository);

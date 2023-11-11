@@ -29,7 +29,8 @@ public class UserTypeFilter implements Filter {
         Boolean isLoginPage = request.getRequestURI().equals("/tomsite_war/introAuth");
         Boolean isUsersPage = request.getRequestURI().equals("/tomsite_war/users");
         Boolean isAddAdminPage = request.getRequestURI().equals("/tomsite_war/addAdmin");
-
+        Boolean isProdListPage = request.getRequestURI().equals("/tomsite_war/allProd");
+        Boolean isAddProdPage = request.getRequestURI().equals("/tomsite_war/addProd");
 
         if (sessionExists) {
             isAuthenticated = (Boolean) session.getAttribute("authenticated");
@@ -49,14 +50,14 @@ public class UserTypeFilter implements Filter {
             request.getRequestDispatcher("/jsp/service.jsp").forward(request, response);
         }
 
-        if (!isAdmin && (isUsersPage || isAddAdminPage)) {
+        if (!isAdmin && (isUsersPage || isAddAdminPage || isProdListPage || isAddProdPage)) {
             String result = "Вы не обладаете правами админа";
             String status = "Провалено";
 
             request.setAttribute("resultOfAut", result);
             request.setAttribute("status", status);
             request.getRequestDispatcher("/jsp/result.jsp").forward(request, response);
-        } else if (isAdmin && (isUsersPage || isAddAdminPage)) {
+        } else if (isAdmin && (isUsersPage || isAddAdminPage || isProdListPage || isAddProdPage)) {
             filterChain.doFilter(request, response);
         }
 

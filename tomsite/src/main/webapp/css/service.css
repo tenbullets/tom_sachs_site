@@ -103,26 +103,40 @@ body {
 }
 
 .basic_inner {
-    height: 310px;
+    height: 322px;
     background-color: black;
     padding-top: 30px;
     width: 1170px;
     margin-bottom: 100px;
+
+}
+
+.info {
+    margin: 5px 5px 5px 5px;
+    width: 50%;
+    height: 85px;
+}
+
+
+.actions {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 5px 5px 5px 10px;
 }
 
-.block {
+.act_block {
     margin: 5px 5px 5px 5px;
-    width: 50%;
+    flex-basis: calc(100% / 3 - 20px);
     height: auto;
+    text-align: center;
+    /* border-bottom: 2px rgba(255, 255, 255, 0.323) solid; */
+    border: 2px rgba(255, 255, 255, 0.212) solid;
+    padding-bottom: 6px;
+    padding-top: 8px;
+
 }
 
-.block_2 {
-    margin: 5px 5px 5px 5px;
-    width: 50%;
-    height: auto;
-    text-align: left;
-}
 
 .username {
     cursor: default;
@@ -161,9 +175,29 @@ body {
     font-size: 14px;
     font-family: 'Manrope', sans-serif;
     font-weight: 400;
-} 
+}
+
+.goto_exit {
+    background-color: #ffffff53;
+
+    text-decoration: none;
+    text-transform: uppercase;
+    /* margin: 15px 5px 0 0; */
+    padding: 3px 32px;
+    color: white;
+    font-size: 14px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+}
 
 .goto:hover {
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    transition: 0.08s linear;
+}
+
+.goto_exit:hover {
     cursor: pointer;
     background-color: white;
     color: black;
@@ -174,8 +208,9 @@ form {
     width: auto;
     height: 24px;
     margin-top: 5px;
-    margin-bottom: 9px;
-    padding-right: 5px;
+    margin-bottom: 8px;
+    padding-right: 0px;
+    text-align: left;
 }
 
 button {
@@ -183,6 +218,10 @@ button {
 }
 
 button.goto {
+    margin-left: 10px;
+}
+
+button.goto_exit {
     margin-left: 10px;
 }
 
@@ -229,7 +268,7 @@ button.goto {
     user-select: none;
     height: 540px;
     margin-top: -1px;
-    background: url(../img/nuke_4.jpg);
+    background: url(../img/other/nuke_4.jpg);
 }
 
 .footer_inner {
@@ -242,11 +281,10 @@ button.goto {
     width: 287px;
     display: flex;
     justify-content: left;
-    font-size: 22px;
+    font-size: 20px;
     font-family: 'Manrope', sans-serif;
     font-weight: 600;
     margin-bottom: 15px;
-    margin-left: 15px;
     color: #fff;
     background-color: black;
     margin-left: 5px;
@@ -259,7 +297,7 @@ button.goto {
     width: 210px;
     display: flex;
     justify-content: left;
-    font-size: 17px;
+    font-size: 16px;
     font-family: 'Manrope', sans-serif;
     font-weight: 400;
     margin-bottom: 7px;

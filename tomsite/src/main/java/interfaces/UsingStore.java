@@ -2,15 +2,17 @@ package interfaces;
 
 import models.Product;
 
+import javax.servlet.http.Part;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
 
 public interface UsingStore {
-    Product getProduct(String tag) throws IOException;
-    HashMap<String, String> getData(String filename) throws IOException;
+    Product getProduct(String tag);
     List<Product> getAllProduct() throws IOException;
-    void saveProd(String name, String tag, String price, String desc, String date);
-    List<String> getTags() throws IOException;
+    void saveProd(String name, String tag, String price, String desc, String date, List<Part> imgs, String count) throws IOException;
+    boolean findProduct(String tag);
+    void delProduct(String tag, String imgsSource);
+    String getImgsSource(String tag);
+    List<String> getImgs(String tag, String imgsSource);
 
 }

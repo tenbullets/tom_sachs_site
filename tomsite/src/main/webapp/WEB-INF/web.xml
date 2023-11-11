@@ -15,16 +15,14 @@
         <url-pattern>/addBucket</url-pattern>
     </servlet-mapping>
 
-
     <servlet>
         <servlet-name>exitPage</servlet-name>
-        <servlet-class>servlets.other.ExitServlet</servlet-class>
+        <servlet-class>servlets.account.ExitServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>exitPage</servlet-name>
         <url-pattern>/exitPage</url-pattern>
     </servlet-mapping>
-
 
     <servlet>
         <servlet-name>introAut</servlet-name>
@@ -34,7 +32,6 @@
         <servlet-name>introAut</servlet-name>
         <url-pattern>/introAuth</url-pattern>
     </servlet-mapping>
-
 
     <servlet>
         <servlet-name>introReg</servlet-name>
@@ -46,9 +43,10 @@
     </servlet-mapping>
 
     <!--  ADMIN  -->
+
     <servlet>
         <servlet-name>users</servlet-name>
-        <servlet-class>servlets.admin.UsersServlets</servlet-class>
+        <servlet-class>servlets.users.UsersServlets</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>users</servlet-name>
@@ -57,14 +55,33 @@
 
     <servlet>
         <servlet-name>addAdmin</servlet-name>
-        <servlet-class>servlets.admin.AdminRegServlet</servlet-class>
+        <servlet-class>servlets.users.AdminRegServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>addAdmin</servlet-name>
         <url-pattern>/addAdmin</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>addProd</servlet-name>
+        <servlet-class>servlets.store.ProdAddServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addProd</servlet-name>
+        <url-pattern>/addProd</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>prodList</servlet-name>
+        <servlet-class>servlets.store.AllProdServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>prodList</servlet-name>
+        <url-pattern>/allProd</url-pattern>
+    </servlet-mapping>
+
     <!-- AUTH FILTER-->
+
     <filter>
         <filter-name>AuthFilter</filter-name>
         <filter-class>filters.AuthFilter</filter-class>
@@ -94,7 +111,9 @@
         <servlet-name>addBucket</servlet-name>
     </filter-mapping>
 
+
     <!-- USER-TYPE FILTER-->
+
     <filter>
         <filter-name>UserTypeFilter</filter-name>
         <filter-class>filters.UserTypeFilter</filter-class>
@@ -117,6 +136,16 @@
     <filter-mapping>
         <filter-name>UserTypeFilter</filter-name>
         <servlet-name>users</servlet-name>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>UserTypeFilter</filter-name>
+        <servlet-name>addProd</servlet-name>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>UserTypeFilter</filter-name>
+        <servlet-name>prodList</servlet-name>
     </filter-mapping>
 
 

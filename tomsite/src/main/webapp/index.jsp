@@ -1,5 +1,6 @@
 <%@ page import="java.util.Random" %>
 <%@ page import="java.util.List" %>
+<%@ page import="repository.StoreRepository" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="<%=application.getContextPath()%>/css/index.css" >
-    <link rel="shortcut icon" href="img/icon.png"/>
+    <link rel="shortcut icon" href="img/other/icon.png"/>
     <title>Том Сакс</title>
 </head>
 
@@ -19,7 +20,7 @@
         <div class="container_1">
             <div class="header_inner">
                 <a href="http://localhost:8080/tomsite_war/index.jsp">
-                    <img class="header_logo" src="img/logo.png" alt="">
+                    <img class="header_logo" src="img/other/logo.png" alt="">
                 </a>
             </div>
 
@@ -36,7 +37,7 @@
     <div class="pre_intro"></div>
     <div class="intro">
         <div class="container_1">
-            <img class="logo_img" src="img/tom.jpg" align="left">
+            <img class="logo_img" src="img/other/tom.jpg" align="left">
             <p class="logo_text">
                 Том Сакс – американский художник и дизайнер. Его работы сочетают в
                 себе элементы поп-культуры, концептуального искусства, науки и истории.
@@ -56,12 +57,17 @@
         <div class="container_1">
             <div class="basic_text">Обновление В Магазине</div>
             <div class="basic_pic">
+                <%
+                    StoreRepository storeRepository = (StoreRepository) config.getServletContext().getAttribute("storeRep");
+                    List<String> bag = storeRepository.getImgs("bag", storeRepository.getImgsSource("bag"));
+                %>
+
                 <div class="change-photos">
                     <div class="change-photo">
-                        <img class="store_img" src="img/store/bag_1.jpg" alt="">
+                        <img class="store_img" src="<%=bag.get(0)%>" alt="">
                     </div>
                     <div class="change-photo">
-                        <img class="store_img" src="img/store/bag_2.jpg" alt="">
+                        <img class="store_img" src="<%=bag.get(1)%>" alt="">
                     </div>
                     <form action="gotoProd" method="GET">
                         <input type="submit" class="product" value="Сумка для MacBook">
@@ -70,12 +76,16 @@
                     </form>
                 </div>
 
+                <%
+                    List<String> spaceships = storeRepository.getImgs("spaceships", storeRepository.getImgsSource("spaceships"));
+                %>
+
                 <div class="change-photos">
                     <div class="change-photo">
-                        <img class="store_img" src="img/store/book_1.jpg" alt="">
+                        <img class="store_img" src="<%=spaceships.get(0)%>" alt="">
                     </div>
                     <div class="change-photo">
-                        <img class="store_img" src="img/store/book_2.jpg" alt="">
+                        <img class="store_img" src="<%=spaceships.get(1)%>" alt="">
                     </div>
                     <form action="gotoProd" method="GET">
                         <input type="submit" class="product" value="Книга Spaceships">
@@ -83,13 +93,17 @@
                         <p class="price">65 $</p>
                     </form>
                 </div>
+
+                <%
+                    List<String> note = storeRepository.getImgs("note", storeRepository.getImgsSource("note"));
+                %>
     
                 <div class="change-photos">
                     <div class="change-photo">
-                        <img class="store_img" src="img/store/notebook_1.jpg" alt="">
+                        <img class="store_img" src="<%=note.get(0)%>" alt="">
                     </div>
                     <div class="change-photo">
-                        <img class="store_img" src="img/store/notebook_2.jpg" alt="">
+                        <img class="store_img" src="<%=note.get(1)%>" alt="">
                     </div>
                     <form action="gotoProd" method="GET">
                         <input type="submit" class="product" value="Блокнот Ten Bullets">
@@ -102,7 +116,7 @@
             <div class="basic_text">Действующие Выставки</div>
 
             <div class="basic_inner">
-                <img class="exh_pic" src="img/exh.jpg" align="left">
+                <img class="exh_pic" src="img/other/exh.jpg" align="left">
                 <p class="exh_text">Retail Experience</p>
                 <p class="exh_text_1">Магазин ISETAN в Синдзюку, Япония</p>
                 <p class="exh_text_1">С 20 сентября по 23 октября 2023</p>
@@ -127,9 +141,9 @@
 <!--                    </a>-->
 
                     <%
-                        String[] exh1 = {"img/timeline_1.jpg", "img/timeline_2.jpg"};
-                        String[] exh2 = {"img/rare_earths_1.jpg", "img/rare_earths_2.jpg"};
-                        String[] exh3 = {"img/spaceships_1.jpg", "img/spaceships_2.jpg"};
+                        String[] exh1 = {"img/other/timeline_1.jpg", "img/other/timeline_2.jpg"};
+                        String[] exh2 = {"img/other/rare_earths_1.jpg", "img/other/rare_earths_2.jpg"};
+                        String[] exh3 = {"img/other/spaceships_1.jpg", "img/other/spaceships_2.jpg"};
                         Random rand = new Random();
                         int i = rand.nextInt(2); int j = rand.nextInt(2); int k = rand.nextInt(2);
                     %>
@@ -170,7 +184,7 @@
                     <a class="footer_main_text" href="https://instagram.com/zhertvapropagandynolana?igshid=NTc4MTIwNjQ2YQ==">instagram</a>
                 </div>
                 <div class="footer_block_2">
-                    <img class="block_2_img" src="img/footer_img_1.jpg" alt="">
+                    <img class="block_2_img" src="img/other/footer_img_1.jpg" alt="">
                 </div>
             </div>
 

@@ -1,5 +1,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="models.Product" %>
+<%@ page import="repository.StoreRepository" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="<%=application.getContextPath() %>/css/store.css" >
-    <link rel="shortcut icon" href="../img/icon.png" />
+    <link rel="shortcut icon" href="img/other/icon.png" />
     <title>Магазин</title>
 </head>
 
@@ -19,14 +20,14 @@
     <div class="container_1">
         <div class="header_inner">
             <a href="http://localhost:8080/tomsite_war/index.jsp">
-                <img class="header_logo" src="../img/logo.png" alt="">
+                <img class="header_logo" src="../img/other/logo.png" alt="">
             </a>
         </div>
 
         <nav class="nav" id="nav">
             <a class="nav_link" href="../exhibitions.html" data-scroll="#">Выставки</a>
             <a class="nav_link" href="../bio.html" data-scroll="#">Биография</a>
-            <a class="nav_link_2" href="jsp/store.jsp"  data-scroll="#">Магазин</a>
+            <a class="nav_link_2" href="store.jsp"  data-scroll="#">Магазин</a>
             <a class="nav_link" href="../contacts.html" data-scroll="#">Контакты</a>
             <a class="nav_link" href="../log_or_reg.html" data-scroll="#">Аккаунт</a>
         </nav>
@@ -46,6 +47,7 @@
 
     <%
         List<Product> products = (List<Product>) config.getServletContext().getAttribute("products");
+        StoreRepository storeRepository = (StoreRepository) config.getServletContext().getAttribute("storeRep");
     %>
 
     <div class="store">
@@ -53,21 +55,21 @@
             <div class="store_inner">
                 <%
                     for(int i = 0; i < products.size(); i++) {
+                        List<String> imgs = storeRepository.getImgs(products.get(i).getTag(), storeRepository.getImgsSource(products.get(i).getTag()));
 
                 %>
 
                 <div class="block">
+
                     <div class="change-photos">
-                        <img class="block_img" src="../<%=products.get(i).getImgSource()%>" alt="">
-
-<%--                        <div class="change-photo">--%>
-<%--                            <img class="block_img" src="../<%=products.get(i).getImgSource()%>" alt="">--%>
-<%--                        </div>--%>
-<%--                        <div class="change-photo">--%>
-<%--                            <img class="block_img" src="../img/store_main/bag_2.jpg" alt="">--%>
-<%--                        </div>--%>
-
+                        <div class="change-photo">
+                            <img class="block_img" src="../<%=imgs.get(0)%>" alt="">
+                        </div>
+                        <div class="change-photo">
+                            <img class="block_img" src="../<%=imgs.get(1)%>" alt="">
+                        </div>
                     </div>
+
                     <form action="${pageContext.servletContext.contextPath}/gotoProd" method="GET">
                         <input type="submit" class="product" value="<%=products.get(i).getName()%>">
                         <input type="hidden" name="htmlContent" value="<%=products.get(i).getTag()%>">
@@ -102,7 +104,7 @@
             </div>
 
             <div class="footer_block_2">
-                <img class="block_2_img" src="../img/footer_img_1.jpg" alt="">
+                <img class="block_2_img" src="../img/other/footer_img_1.jpg" alt="">
             </div>
         </div>
 

@@ -206,7 +206,7 @@ button:hover {
     user-select: none;
     height: 540px;
     margin-top: -1px;
-    background: url(../img/nuke_4.jpg);
+    background: url(../img/other/nuke_4.jpg);
 }
 
 .footer_inner {
@@ -219,11 +219,10 @@ button:hover {
     width: 287px;
     display: flex;
     justify-content: left;
-    font-size: 22px;
+    font-size: 20px;
     font-family: 'Manrope', sans-serif;
     font-weight: 600;
     margin-bottom: 15px;
-    margin-left: 15px;
     color: #fff;
     background-color: black;
     margin-left: 5px;
@@ -231,17 +230,17 @@ button:hover {
 }
 
 .footer_main_text {
+    text-decoration: none;
+    color: black;
     width: 210px;
     display: flex;
     justify-content: left;
-    font-size: 17px;
+    font-size: 16px;
     font-family: 'Manrope', sans-serif;
     font-weight: 400;
     margin-bottom: 7px;
     margin-top: 7px;
     margin-left: 17px;
-    text-decoration: none;
-    color: black;
 }
 
 .footer_main_text:hover {

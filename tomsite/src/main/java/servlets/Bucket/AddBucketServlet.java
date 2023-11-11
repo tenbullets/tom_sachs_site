@@ -5,12 +5,14 @@ import interfaces.BucketCookie;
 import repository.BucketCookieJdbc;
 import repository.StoreRepository;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 public class AddBucketServlet extends HttpServlet {
 
@@ -19,8 +21,8 @@ public class AddBucketServlet extends HttpServlet {
     int i;
 
     @Override
-    public void init() {
-        storeRepository = new StoreRepository();
+    public void init(ServletConfig config) {
+        storeRepository = (StoreRepository) config.getServletContext().getAttribute("storeRep");
         bucketCookie = new BucketCookieJdbc();
     }
 
@@ -39,11 +41,14 @@ public class AddBucketServlet extends HttpServlet {
         }
 
         Product product = storeRepository.getProduct(tag);
+        List<String> imgs = storeRepository.getImgs(tag, storeRepository.getImgsSource(tag));
+
         request.setAttribute("tag", tag);
         request.setAttribute("name", product.getName());
-        request.setAttribute("price", product.getPrice());
+        request.setAttribute("price", String.valueOf(product.getPrice()));
         request.setAttribute("description", product.getDescription());
-        request.setAttribute("img", product.getImgSource());
+        request.setAttribute("imgs", imgs);
+        request.setAttribute("count", String.valueOf(product.getCount()));
 
         String count = Integer.toString(i);
         bucketCookie.addCookie("count", count, response);

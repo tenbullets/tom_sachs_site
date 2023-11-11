@@ -1,5 +1,6 @@
 <%@ page import="models.Product" %>
 <%@ page import="repository.StoreRepository" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="<%=application.getContextPath() %>/css/bucket.css" >
-    <link rel="shortcut icon" href="img/icon.png" />
+    <link rel="shortcut icon" href="img/other/icon.png" />
     <title>Том Сакс</title>
 </head>
 
@@ -19,7 +20,7 @@
     <div class="container_1">
         <div class="header_inner">
             <a href="http://localhost:8080/tomsite_war/index.jsp">
-                <img class="header_logo" src="img/logo.png" alt="">
+                <img class="header_logo" src="img/other/logo.png" alt="">
             </a>
         </div>
 
@@ -47,18 +48,20 @@
         <div class="container_1">
 
             <% String[] prod = (String[]) request.getAttribute("products");
-                StoreRepository storeRepository =  new StoreRepository();
+                StoreRepository storeRepository = (StoreRepository) request.getAttribute("storeRep");
                 int price = 0;
                 for (String s : prod) {
                     if (!s.isEmpty()) {
                         Product product = storeRepository.getProduct(s);
-                        int number = Integer.parseInt(product.getPrice());
+                        int number = product.getPrice();
                         price += number;
+
+                        List<String> imgs = storeRepository.getImgs(product.getTag(), storeRepository.getImgsSource(product.getTag()));
             %>
 
             <div class="basic_inner">
                 <div class="img_block">
-                    <img class="img" src="<%=product.getImgSource()%>" alt="">
+                    <img class="img" src="<%=imgs.get(0)%>" alt="">
                 </div>
                 <div class="block_1">
                     <form action = "gotoProd" method = "GET">
@@ -107,7 +110,7 @@
                 </div>
 
                 <div class="footer_block_2">
-                    <img class="block_2_img" src="img/footer_img_1.jpg" alt="">
+                    <img class="block_2_img" src="img/other/footer_img_1.jpg" alt="">
                 </div>
             </div>
 

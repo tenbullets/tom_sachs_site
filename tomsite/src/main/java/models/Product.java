@@ -11,10 +11,12 @@ import lombok.Setter;
 @Builder
 
 public class Product {
+    private String id;
     private String tag;
     private String name;
-    private String price;
+    private int price;
     private String description;
-    private String imgSource;
     private String date;
+    private String imgSource;
+    private int count;
 }

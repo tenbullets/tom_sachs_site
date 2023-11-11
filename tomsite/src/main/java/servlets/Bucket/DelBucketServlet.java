@@ -2,7 +2,9 @@ package servlets.bucket;
 
 import interfaces.BucketCookie;
 import repository.BucketCookieJdbc;
+import repository.StoreRepository;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -14,10 +16,12 @@ import java.io.IOException;
 @WebServlet("/del")
 public class DelBucketServlet extends HttpServlet {
     private BucketCookie bucketCookie;
+    private StoreRepository storeRepository;
 
     @Override
-    public void init() {
+    public void init(ServletConfig config) {
         bucketCookie = new BucketCookieJdbc();
+        storeRepository = (StoreRepository) config.getServletContext().getAttribute("storeRep");
     }
 
     @Override
@@ -43,6 +47,7 @@ public class DelBucketServlet extends HttpServlet {
 
         // обновляем этот щит
         request.setAttribute("products", prodToBucket);
+        request.setAttribute("storeRep", storeRepository);
         request.getRequestDispatcher("/jsp/bucket.jsp").forward(request, response);
     }
 
