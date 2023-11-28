@@ -17,7 +17,6 @@ public class UsersServlets extends HttpServlet {
         usersRepository = (UsersRepository) config.getServletContext().getAttribute("userRep");
     }
 
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List users, admins;

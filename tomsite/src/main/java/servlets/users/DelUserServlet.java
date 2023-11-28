@@ -1,5 +1,6 @@
 package servlets.users;
 
+import interfaces.OrdersRepository;
 import interfaces.UsersRepository;
 import repository.DataRepositoryJdbc;
 import javax.servlet.ServletConfig;
@@ -16,21 +17,29 @@ import java.sql.SQLException;
 public class DelUserServlet extends HttpServlet {
     private UsersRepository usersRepository;
     private DataRepositoryJdbc data;
+    OrdersRepository ordersRepository;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         usersRepository = (UsersRepository) config.getServletContext().getAttribute("userRep");
         data = (DataRepositoryJdbc) config.getServletContext().getAttribute("dataRep");
+        ordersRepository = (OrdersRepository) config.getServletContext().getAttribute("orderRep");
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
+
         try {
-            if (usersRepository.findUserByName(username)) data.delUser(usersRepository.returnId(username));
+            if (usersRepository.findUserByName(username)) {
+                String id = usersRepository.returnId(username);
+                ordersRepository.delUserOrders(id);
+                data.delUser(id);
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
         request.getRequestDispatcher("/users").forward(request, response);
     }
 

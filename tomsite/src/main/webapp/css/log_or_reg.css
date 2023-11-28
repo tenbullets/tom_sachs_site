@@ -42,6 +42,22 @@ body {
     text-transform: uppercase;
 }
 
+.nav.fixed {
+    top: 0;
+    position: fixed;
+    background-color: rgba(255, 255, 255, 0.880);
+    backdrop-filter: blur(4px);
+    width: 1250px;
+    padding: 19px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.832);
+}
+
+.container_1.wid {
+    width: 100%;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
 .nav_link {
     text-decoration: none;
     font-family: 'Manrope', sans-serif;
@@ -64,6 +80,12 @@ body {
     color: #cc7a00;
     text-decoration: underline #cc7a00 1px;
     transition: opacity .1s linear;
+}
+
+.nav_link_2:hover {
+    color: black;
+    transition: 0.7s;
+    text-decoration: underline black 1px;
 }
 
 .nav_link:hover {
@@ -135,44 +157,88 @@ body {
 
 
 .block {
-    height: 250px;
-    margin: 0 7px 0 5px;
-    width: 30%;
-    text-align: left;
-    position: relative;
+    height: 300px;
+    background-color: #cc8100;
+    margin-bottom: 150px;
 }
 
-.basic_inner {
-    margin-top: 20px;
-    display: flex;
-    margin-bottom: 94px;
-}
-
-.title {
-
+.block_title {
+    cursor: default;
+    margin: 0 0 35px 24px;
+    padding-top: 20px;
+    font-size: 26px;
     text-align: left;
     font-family: 'Manrope', sans-serif;
-    margin-top: 20px;
-    margin-left: 5px;
-    padding-left: 7px;
-    cursor: default;
-    text-transform: uppercase;
-    font-size: 19px;
-    font-weight: 400;
-    color: white;
-    background-color: #00000095;
-    width: 72%;
+    font-weight: 300;
+    color: #fff;
 }
 
+.action {
+    position: relative;
+    left: 55%;
+    top: 10%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: fit-content;
+}
+
+form {
+    float: left;
+    width:fit-content
+}
+
+.text {
+    width: 95%;
+    margin: 0 0 0 24px;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.block_text {
+    float: left;
+    cursor: default;
+    margin: 0 0 10px 0;
+    font-size: 17px;
+    text-align: left;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 300;
+    color: white;
+    width: fit-content;
+    background-color: #00000055;
+    padding: 0 3px 0 3px;
+}
+
+.about_link {
+    padding: 0 3px 0 3px;
+
+    float: left;
+    cursor: pointer;
+    text-decoration: none;
+    margin: 0 0 5px 5px;
+    font-size: 17px;
+    text-align: left;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 300;
+    color: white;
+    background-color: #00000055;
+}
+
+.about_link:hover {
+    background-color: white;
+    color: black;
+    transition: 0.08s linear;
+}
 
 
 button {
     text-transform: uppercase;
-    margin: 15px 5px 0px 0px;
+    margin: 26px 15px 0px 0px;
     padding: 1px 35px;
     background-color: black;
     border: none;
     height: 24px;
+    background-color: black;
+    border-radius: 4px;
 
     color: #fff;
     font-size: 16px;
@@ -182,7 +248,8 @@ button {
 
 button:hover {
     cursor: pointer;
-    background-color: #cc7a00;
+    background-color: white;
+    color: black;
     transition: 0.08s linear;
 }
 

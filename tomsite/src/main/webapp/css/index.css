@@ -42,6 +42,22 @@ body {
     text-transform: uppercase;
 }
 
+.nav.fixed {
+    top: 0;
+    position: fixed;
+    background-color: rgba(255, 255, 255, 0.880);
+    backdrop-filter: blur(4px);
+    width: 1250px;
+    padding: 19px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.832);
+}
+
+.container_1.wid {
+    width: 100%;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
 .nav_link {
     text-decoration: none;
     font-family: 'Manrope', sans-serif;
@@ -64,6 +80,12 @@ body {
     color: #cc7a00;
     text-decoration: underline #cc7a00 1px;
     transition: opacity .1s linear;
+}
+
+.nav_link_2:hover {
+    color: black;
+    transition: 0.7s;
+    text-decoration: underline black 1px;
 }
 
 .nav_link:hover {
@@ -97,10 +119,7 @@ body {
     width: 292px;
     height: 365px;
     border-radius: 12px;
-    margin-right: 45px;
-    margin-top: 12px;
-    margin-left: 27px;
-    margin-bottom: 30px;
+    margin: 12px 45px 30px 27px;
 }
 
 .logo_text {
@@ -110,7 +129,7 @@ body {
     font-weight: 500;
     padding-top: 48px;
     padding-right: 60px;
-    margin-top: 0px;
+    margin-top: 0;
     cursor: default;
 }
 
@@ -173,11 +192,10 @@ body {
     font-size: 21px;
     font-family: 'Manrope', sans-serif;
     font-weight: 600;
-    opacity: 0%;
+    opacity: 0;
     position: absolute;
     transition: .18s linear;
     width: 100%;
-    height: 100%;
     top: 100%;
     color: #fff;
     transform: translate(0%, -100%);
@@ -216,7 +234,7 @@ body {
     margin-left: 40px;
     font-family: 'Manrope', sans-serif;
     font-weight: 500;
-    padding-top: 0px;
+    padding-top: 0;
     padding-right: 60px;
     cursor: default;
 }
@@ -226,9 +244,16 @@ body {
     font-family: 'Manrope', sans-serif;
     font-weight: 500;
     padding-left: 27px;
-    padding-top: 0px;
+    padding-top: 0;
     padding-right: 60px;
     cursor: default;
+}
+
+.exh_img {
+    text-align: center;
+    display: inline-block;
+    height: 276px;
+    margin: 20px auto 22px auto;
 }
 
 .basic_inner {
@@ -246,23 +271,53 @@ body {
     user-select: none;
     height: 296px;
     border-radius: 12px;
-    position: relative;
     margin: 4px;
     transition: filter .1s linear;
+}
+
+.store_inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    text-align: center;
+}
+
+
+
+.block {
+    margin: 3px;
+    flex-basis: calc(100% / 3 - 6px);
+    height: 376px;
+    text-align: center;
+    display: inline-block;
+}
+
+.block_2 {
+    margin: 3px 3px;
+    flex-basis: calc(100% / 3 - 6px);
+    height: 357px;
+    text-align: center;
+    display: inline-block;
+}
+
+.block_img {
+    height: 276px;
+    border-radius: 12px;
+    cursor: default;
 }
 
 .product {
     cursor: pointer;
     font-size: 17px;
-    width: 72%;
+    width: fit-content;
     height: 25px;
     font-family: 'Manrope', sans-serif;
     font-weight: 500;
-    background-color: black;
-    margin: 4px auto 0;
-    padding-top: 0;
+    background-color: #00000095;
+    margin: -7px auto 0;
     color: #fff;
     border: none;
+    padding: 1px 25px 0 25px;
 }
 
 .product:hover {
@@ -284,9 +339,29 @@ body {
     color: #fff;
 }
 
+.exh_name {
+    cursor: pointer;
+    font-size: 17px;
+    width: 86%;
+    height: 25px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 500;
+    background-color: rgba(0, 0, 0, 0.75);
+    margin: 4px auto 0;
+    padding-top: 1px;
+    color: #fff;
+    border: none;
+}
+
+.exh_name:hover {
+    background-color: #cc8100;
+    color: #fff;
+    transition: 0.08s linear;
+}
+
 
 .footer {
-    margin-top: 30px;
+    margin-top: 13px;
 }
 
 .footer_img {
@@ -336,23 +411,6 @@ body {
     cursor: pointer;
 }
 
-
-/* .social {
-    text-align: center;
-    padding-top: 480px;
-    height: 645px;
-    width: 400px;
-    margin-left: 20px;
-    pointer-events: all;
-}
-
-.social_logo {
-    height: 41px;
-    margin-bottom: 20px;
-    margin-top: 12px;
-} */
-
-
 .footer_block {
     margin-top: 10px;
     padding-top: 18px;
@@ -364,7 +422,7 @@ body {
     user-select: none;
     margin-top: 10px;
     margin-left: 202px;
-    padding: 0px 0px;
+    padding: 0 0;
     height: 219px;
     opacity: 50%;
 }
@@ -378,12 +436,11 @@ body {
 
 
 
-
-
 .change-photos {
     text-align: center;
     display: inline-block;
-    height: 350px;
+    height: 276px;
+    margin: 20px auto 22px auto;
 }
 .change-photos .change-photo img {
     object-fit: cover;
@@ -405,4 +462,104 @@ body {
   
 .change-photos:hover {
     cursor: default;
+}
+
+
+.exhs {
+    margin-top: 10px;
+    display: flex;
+    width: 1170px;
+    height: 372px;
+    border-bottom: 2px rgba(0, 0, 0, 0.175) solid;
+}
+
+.exh_block {
+    width: 40%;
+    height: 372px;
+    display: flex;
+}
+
+.exh_info {
+    width: 60%;
+    display: block;
+}
+
+.info_block_1 {
+    width: 100%;
+    height: 80px;
+    padding: 10px 3px 10px 0;
+    margin-bottom: 24px;
+}
+
+.info_block_2 {
+    width: 100%;
+    height: 260px;
+    padding: 10px 3px 10px 0;
+
+}
+
+.exh_img {
+    cursor: default;
+    height: 285px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 32px;
+    border-radius: 12px;
+}
+
+.exh_title_1 {
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 19px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+    color: white;
+    margin: 10px 0 10px 7px;
+    background-color: #00000095;
+    width: fit-content;
+    padding-left: 7px;
+    border: none;
+    text-align: left;
+    padding-right: 11px;
+}
+
+.exh_title_1:hover {
+    background-color: #cc8100;
+    color: #fff;
+    transition: 0.08s linear;
+}
+
+.exh_title_2 {
+    cursor: default;
+    text-transform: uppercase;
+    font-size: 19px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+    color: white;
+    margin: 10px 0 10px 7px;
+    background-color: #00000095;
+    width: 11%;
+    padding-left: 7px;
+}
+
+.info_text {
+    cursor: default;
+    font-size: 16px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+    margin: 5px 0 5px 7px;
+    padding-left: 7px;
+    width: fit-content;
+    background-color: #00000060;
+    color: white;
+    padding-right: 11px;
+}
+
+.about {
+    cursor: default;
+    font-size: 15px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+    color: black;
+    margin: 5px 0 5px 7px;
 }

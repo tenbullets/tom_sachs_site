@@ -1,0 +1,435 @@
+body {
+    margin: 0;
+    font-size: 15px;
+}
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+.container_1 {
+    width: 100%;
+    max-width: 1170px;
+    margin: 0 auto;
+}
+
+/*--Header-- */
+
+.header_inner {
+    text-align: center;
+}
+
+.header_text {
+    font-size: 35px;
+    text-align: center;
+    margin: 29px 0 32px 0;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 500;
+}
+
+.header_logo {
+    user-select: none;
+    width: 230px;
+    margin-bottom: 29px;
+    margin-top: 18px;
+}
+
+/* --Navigation-- */
+
+.nav {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.nav.fixed {
+    top: 0;
+    position: fixed;
+    background-color: rgba(255, 255, 255, 0.880);
+    backdrop-filter: blur(4px);
+    width: 1250px;
+    padding: 19px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.832);
+}
+
+.container_1.wid {
+    width: 100%;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+.nav_link {
+    text-decoration: none;
+    font-family: 'Manrope', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    display: inline-block;
+    padding: 0 48px 0 48px;
+    opacity: 0.75;
+    color: black;
+    transition: opacity .1s linear;
+}
+
+.nav_link_2 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    display: inline-block;
+    padding: 0 48px 0 48px;
+    opacity: 0.75;
+    color: #cc7a00;
+    text-decoration: underline #cc7a00 1px;
+    transition: opacity .1s linear;
+}
+
+.nav_link_2:hover {
+    color: black;
+    transition: 0.7s;
+    text-decoration: underline black 1px;
+}
+
+.nav_link:hover {
+    color: #cc7a00;
+    transition: 0.5s;
+    text-decoration: underline #cc7a00 1px;
+}
+
+
+
+.logo_text {
+    cursor: default;
+    text-transform: uppercase;
+    margin-top: 0px;
+    font-size: 18px;
+    text-align: center;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 500;
+    color: #fff;
+}
+
+
+.pre_logo {
+    margin-top: 30px;
+    width: 1170px;
+    border-bottom: 15px solid #cc8100;
+    border-right: 15px solid rgba(255, 255, 255, 0);
+    /* border-left: 15px solid rgba(255, 255, 255, 0); */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logo {
+    text-align: center;
+    width: 1170px;
+    height: 38px;
+    background-color: #cc8100;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logo_text {
+    cursor: default;
+    text-transform: uppercase;
+    margin-top: 0px;
+    font-size: 18px;
+    text-align: center;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 500;
+    color: #fff;
+}
+
+
+.basic_inner {
+    margin-bottom: 60px;
+    height: auto;
+    border-bottom: 2px rgba(0, 0, 0, 0.175) solid;
+}
+
+.title {
+    cursor: default;
+    text-transform: uppercase;
+    font-size: 19px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+    color: white;
+    margin: 15px 14px 26px 14px;
+    background-color: #00000060;
+    width: auto;
+    padding-left: 7px;
+}
+
+.info {
+    width: 100%;
+    padding-top: 5px;
+    border: 2px rgba(0, 0, 0, 0.175) solid;
+    margin-top: 18px;
+    background-color: rgba(0, 0, 0, 0.082);
+}
+
+.name::before {
+    content: "Заказ № ";
+    color: black;
+}
+
+.name {
+    cursor: default;
+    text-transform: uppercase;
+    font-size: 19px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 500;
+    color: rgb(69, 69, 69);
+    margin: 15px 14px 26px 14px;
+
+    width: auto;
+    padding-left: 7px;
+}
+
+.status::before {
+    content: "Статус: ";
+    color: black;
+}
+
+.status {
+    cursor: default;
+    text-transform: uppercase;
+    font-size: 17px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 500;
+    color: rgb(69, 69, 69);
+    margin: 15px 14px 26px 14px;
+
+    width: auto;
+    padding-left: 7px;
+}
+
+.date::before {
+    content: "Дата: ";
+    color: black;
+}
+
+.date {
+    cursor: default;
+    text-transform: uppercase;
+    font-size: 17px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 500;
+    color: rgb(69, 69, 69);
+    margin: 15px 14px 26px 14px;
+
+    width: auto;
+    padding-left: 7px;
+}
+
+.price::before {
+    content: "Стоимость: ";
+    color: black;
+}
+
+.price {
+    cursor: default;
+    text-transform: uppercase;
+    font-size: 17px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 500;
+    color: rgb(69, 69, 69);
+    margin: 15px 14px 26px 14px;
+
+    width: auto;
+    padding-left: 7px;
+}
+
+
+table {
+    width: auto;
+    margin: 5px 14px 45px 14px;
+}
+
+tr {
+    border: 2px black;
+    height: 50px;
+    cursor: default;
+}
+
+th {
+    text-align: left;
+    font-size: 19px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+    padding: 2px 40px 2px 15px;
+    margin: 2px 45px 2px 0;
+    cursor: default;
+}
+
+td {
+    text-align: left;
+    font-size: 17px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 300;
+    padding: 2px 45px 2px 15px;
+    cursor: default;
+}
+
+.tc {
+    text-align: center;
+    cursor: default;
+}
+
+
+.del {
+    text-align: left;
+    cursor: pointer;
+    font-size: 18px;
+    width: auto;
+    height: 25px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+    color: red;
+    border: none;
+    background: none;
+    padding-left: 7px;
+
+    margin-top: 0px;
+    margin-left: 0px;
+}
+
+.del:hover {
+    color: black;
+    transition: 0.08s linear;
+}
+
+
+.goto {
+    text-align: left;
+    cursor: pointer;
+    font-size: 18px;
+    width: auto;
+    height: 25px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+    color: rgba(33, 132, 0, 0.922);
+    border: none;
+    background: none;
+    padding-left: 0;
+    cursor: pointer;
+}
+
+.goto:hover {
+    color: black;
+    transition: 0.08s linear;
+}
+
+
+.about_link {
+    cursor: pointer;
+    text-decoration: none;
+    color: green;
+
+    display: flex;
+
+    font-size: 18px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+
+    margin-top: 0px;
+    margin-left: 0px;
+
+}
+
+.about_link:hover {
+    color: black;
+    transition: 0.5s;
+}
+
+
+button {
+    text-transform: uppercase;
+    margin: 15px 5px 0px 0px;
+    padding: 1px 35px;
+    background-color: black;
+    border: none;
+    height: 24px;
+
+    color: #fff;
+    font-size: 16px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #cc7a00;
+    transition: 0.08s linear;
+}
+
+.footer {
+    margin-top: 30px;
+}
+
+.footer_img {
+    user-select: none;
+    height: 540px;
+    margin-top: -1px;
+    background: url(../img/other/nuke_4.jpg);
+}
+
+.footer_inner {
+    display: flex;
+}
+
+.footer_title_text {
+    text-transform: uppercase;
+    cursor: default;
+    width: 287px;
+    display: flex;
+    justify-content: left;
+    font-size: 20px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #fff;
+    background-color: #cc8100;
+    margin-left: 5px;
+    padding-left: 5px;
+}
+
+.footer_main_text {
+    text-decoration: none;
+    color: black;
+    width: 210px;
+    display: flex;
+    justify-content: left;
+    font-size: 16px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+    margin-bottom: 7px;
+    margin-top: 7px;
+    margin-left: 17px;
+}
+
+.footer_main_text:hover {
+    color: #cc8100;
+    transition: 0.7s;
+    cursor: pointer;
+}
+
+.footer_block {
+    margin-top: 10px;
+    padding-top: 18px;
+    height: 250px;
+    width: 60%;
+}
+
+.block_2_img {
+    user-select: none;
+    margin-top: 10px;
+    margin-left: 202px;
+    padding: 0px 0px;
+    height: 219px;
+    opacity: 50%;
+}
+
+.footer_block_2 {
+    margin-top: 10px;
+    padding-top: 11px;
+    height: 250px;
+    width: 40%;
+}

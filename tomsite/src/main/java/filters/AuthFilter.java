@@ -9,9 +9,7 @@ import java.io.IOException;
 public class AuthFilter implements Filter {
 
     @Override
-    public void init(FilterConfig config) throws ServletException {
-
-    }
+    public void init(FilterConfig config) throws ServletException {}
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
@@ -28,7 +26,6 @@ public class AuthFilter implements Filter {
         Boolean isExitPage = request.getRequestURI().equals("/tomsite_war/exitPage");
         Boolean isBasketPage = request.getRequestURI().equals("/tomsite_war/addBucket");
 
-
         if (sessionExists) {
             isAuthenticated = (Boolean) session.getAttribute("authenticated");
             if (isAuthenticated == null) isAuthenticated = false;
@@ -44,7 +41,7 @@ public class AuthFilter implements Filter {
         }
 
         if (isBasketPage && !isAuthenticated) {
-            String result = "Прежде чем совершать покупки, войдите или зарегестрируйтесь. Для этого перейдите в раздел «Аккаунт».";
+            String result = "Прежде чем совершать покупки, войдите или зарегистрируйтесь. Для этого перейдите в раздел «Аккаунт».";
             String status = "Вы не вошли";
 
             request.setAttribute("resultOfAut", result);
@@ -56,7 +53,5 @@ public class AuthFilter implements Filter {
     }
 
     @Override
-    public void destroy() {
-
-    }
+    public void destroy() {}
 }

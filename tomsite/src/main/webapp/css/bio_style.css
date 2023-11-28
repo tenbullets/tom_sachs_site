@@ -42,6 +42,22 @@ body {
     text-transform: uppercase;
 }
 
+.nav.fixed {
+    top: 0;
+    position: fixed;
+    background-color: rgba(255, 255, 255, 0.880);
+    backdrop-filter: blur(4px);
+    width: 1250px;
+    padding: 19px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.832);
+}
+
+.container_1.wid {
+    width: 100%;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
 .nav_link {
     text-decoration: none;
     font-family: 'Manrope', sans-serif;
@@ -64,6 +80,12 @@ body {
     color: #cc7a00;
     text-decoration: underline #cc7a00 1px;
     transition: opacity .1s linear;
+}
+
+.nav_link_2:hover {
+    color: black;
+    transition: 0.7s;
+    text-decoration: underline black 1px;
 }
 
 .nav_link:hover {
@@ -118,41 +140,27 @@ body {
 
 .bio_pic {
     user-select: none;
-    height: 300px;
+    height: 357px;
     border-radius: 12px;
     text-align: center;
-    position: relative;
     margin: 34px 6px 10px 6px;
 }
 
 .bio_pic_1 {
     user-select: none;
-    height: 270px;
+    height: 290px;
     border-radius: 12px;
     text-align: center;
-    position: relative;
-    margin: 34px 4px 23px 4px;
-
+    margin: 0 4px 19px 4px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.bio_pic_2 {
+    user-select: none;
+    height: 320px;
+    border-radius: 12px;
+    text-align: center;
+    margin: 0 4px 32px 4px;
+}
 
 .footer {
     margin-top: 30px;

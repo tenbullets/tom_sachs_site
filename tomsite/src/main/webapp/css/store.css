@@ -42,6 +42,22 @@ body {
     text-transform: uppercase;
 }
 
+.nav.fixed {
+    top: 0;
+    position: fixed;
+    background-color: rgba(255, 255, 255, 0.880);
+    backdrop-filter: blur(4px);
+    width: 1250px;
+    padding: 19px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.832);
+}
+
+.container_1.wid {
+    width: 100%;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
 .nav_link {
     text-decoration: none;
     font-family: 'Manrope', sans-serif;
@@ -64,6 +80,12 @@ body {
     color: #cc7a00;
     text-decoration: underline #cc7a00 1px;
     transition: opacity .1s linear;
+}
+
+.nav_link_2:hover {
+    color: black;
+    transition: 0.7s;
+    text-decoration: underline black 1px;
 }
 
 .nav_link:hover {
@@ -95,7 +117,7 @@ body {
 .logo_text {
     cursor: default;
     text-transform: uppercase;
-    margin-top: 0px;
+    margin-top: 0;
     font-size: 18px;
     text-align: center;
     font-family: 'Manrope', sans-serif;
@@ -111,16 +133,16 @@ body {
 }
 
 .block {
-    margin: 5px 5px 5px 5px;
-    flex-basis: calc(100% / 3 - 20px);
-    height: 390px;
+    margin: 7px;
+    flex-basis: calc(100% / 3 - 14px);
+    height: 382px;
     text-align: center;
-    border-bottom: 2px rgba(0, 0, 0, 0.095) solid;
+    border: 3px rgba(0, 0, 0, 0.095) solid;
+    border-radius: 12px;
 }
 
 .block_img {
     height: 276px;
-    margin: 20px auto 20px auto;
     border-radius: 12px;
     cursor: default;
 }
@@ -128,15 +150,15 @@ body {
 .product {
     cursor: pointer;
     font-size: 17px;
-    width: 72%;
+    width: fit-content;
     height: 25px;
     font-family: 'Manrope', sans-serif;
     font-weight: 500;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.75);
     margin: -7px auto 0;
-    padding-top: 0;
     color: #fff;
     border: none;
+    padding: 1px 25px 0 25px;
 }
 
 .product:hover {
@@ -222,7 +244,7 @@ body {
     user-select: none;
     margin-top: 10px;
     margin-left: 202px;
-    padding: 0px 0px;
+    padding: 0 0;
     height: 219px;
     opacity: 50%;
 }
@@ -239,26 +261,27 @@ body {
 .change-photos {
     text-align: center;
     display: inline-block;
-    border-radius: 10px;
+    height: 276px;
+    margin: 13px 0 24px 0;
 }
 .change-photos .change-photo img {
     object-fit: cover;
     border-radius: 12px;
 }
-  
+
 .change-photos .change-photo:nth-of-type(2) {
     display: none;
 }
-  
-  
+
+
 .change-photos:hover .change-photo:nth-of-type(1) {
     display: none;
 }
-  
+
 .change-photos:hover .change-photo:nth-of-type(2) {
     display: block;
 }
-  
+
 .change-photos:hover {
     cursor: pointer;
 }

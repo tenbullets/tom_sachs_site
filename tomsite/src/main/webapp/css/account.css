@@ -66,6 +66,12 @@ body {
     transition: opacity .1s linear;
 }
 
+.nav_link_2:hover {
+    color: black;
+    transition: 0.7s;
+    text-decoration: underline black 1px;
+}
+
 .nav_link:hover {
     color: #cc7a00;
     transition: 0.5s;
@@ -94,7 +100,7 @@ body {
 .logo_text {
     cursor: default;
     text-transform: uppercase;
-    margin-top: 0px;
+    margin-top: 0;
     font-size: 18px;
     text-align: center;
     font-family: 'Manrope', sans-serif;
@@ -103,8 +109,7 @@ body {
 }
 
 .basic_inner {
-    height: 310px;
-    margin-bottom: 100px;
+    height: 322px;
     background-color: #cc8100;
     padding-top: 30px;
     width: 1170px;
@@ -115,6 +120,26 @@ body {
     margin: 5px 5px 5px 5px;
     width: 50%;
     height: auto;
+}
+
+.block_pic {
+    width: 20%;
+    height: auto;
+}
+
+.pic {
+    width: 80px;
+    margin: -4px 10px 0 16px;
+    padding: 2px;
+    border: 2px black solid;
+    border-radius: 4px;
+    opacity: 0.65;
+}
+
+.info {
+    margin-left: 10px;
+    height: 90px;
+    margin-bottom: 13px;
 }
 
 .block_2 {
@@ -131,10 +156,12 @@ body {
     font-weight: 500;
     color: #fff;
     background-color: #00000095;
-    padding: 0 0 0 4px;
+    padding: 0 20px 0 11px;
     margin-top: 5px;
-    margin-left: 10px;
-    width: 60%;
+    margin-left: 115px;
+    width: fit-content;
+    margin-bottom: 9px;
+
 }
 
 .email {
@@ -144,38 +171,106 @@ body {
     font-weight: 400;
     color: #fff;
     background-color: #00000095;
-    padding: 1px 4px 1px 4px;
+    padding: 0 20px 0 11px;
     margin-top: 0;
-    margin-left: 10px;
-    margin-bottom: 23px;
-    width: 48%;
+    margin-left: 115px;
+    margin-bottom: 32px;
+    width: fit-content;
 }
 
-button {
-    border: none;
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 5px 5px 5px 10px;
 }
 
-button.goto {
-    margin-left: 10px;
+.act_block {
+    margin: 5px 5px 5px 5px;
+    flex-basis: calc(100% / 3 - 20px);
+    height: auto;
+    text-align: center;
+
+    border: 2px #00000095 solid;
+    border-radius: 4px;
+
+    display: block;
+    padding: 10px 4px 10px 4px;
+
 }
+
+
+
 
 .goto {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: fit-content;
+    height: fit-content;
+
+    background-color: #000000;
+
     text-decoration: none;
     text-transform: uppercase;
-    margin: 15px 5px 15px 10px;
-    padding: 1px 29px;
-    background-color: black;
-    color: #fff;
-    font-size: 13px;
+
+    padding: 3px 32px;
+    color: white;
+    font-size: 14px;
     font-family: 'Manrope', sans-serif;
     font-weight: 400;
-} 
+    border-radius: 4px;
+}
+
+.goto_exit {
+    background-color: #00000095;
+
+    text-decoration: none;
+    text-transform: uppercase;
+
+    padding: 3px 32px;
+    color: white;
+    font-size: 14px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+    border-radius: 4px;
+}
 
 .goto:hover {
     cursor: pointer;
     background-color: white;
     color: black;
     transition: 0.08s linear;
+}
+
+.goto_exit:hover {
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    transition: 0.08s linear;
+}
+
+form {
+    width: auto;
+    height: fit-content;
+    padding-right: 0;
+    text-align: center;
+}
+
+button {
+    border: none;
+    border-radius: 4px;
+}
+
+button.goto {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: black;
+}
+
+button.goto_exit {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .title {
@@ -209,8 +304,13 @@ button.goto {
 
 .about_link:hover {
     color: #fff;
-    transition: 0.5s;
+    transition: 0.08s linear;
 }
+
+
+
+
+
 
 .footer {
     margin-top: 90px;
@@ -274,7 +374,7 @@ button.goto {
     user-select: none;
     margin-top: 10px;
     margin-left: 202px;
-    padding: 0px 0px;
+    padding: 0 0;
     height: 219px;
     opacity: 50%;
 }

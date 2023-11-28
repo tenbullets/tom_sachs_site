@@ -1,5 +1,5 @@
 <%@ page import="models.Product" %>
-<%@ page import="repository.StoreRepository" %>
+<%@ page import="repository.StoreRepositoryJdbc" %>
 <%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,7 +48,7 @@
         <div class="container_1">
 
             <% String[] prod = (String[]) request.getAttribute("products");
-                StoreRepository storeRepository = (StoreRepository) request.getAttribute("storeRep");
+                StoreRepositoryJdbc storeRepository = (StoreRepositoryJdbc) request.getAttribute("storeRep");
                 int price = 0;
                 for (String s : prod) {
                     if (!s.isEmpty()) {
@@ -83,9 +83,15 @@
                 }
             %>
 
-            <div class="basic_inner" style="border-bottom: none">
+            <div class="basic_inner" style="border-bottom: none ;">
                 <div class="block_3">
                     <h1 class="result">Итого: <%=price%> $</h1>
+                </div>
+
+                <div class="block_3">
+                    <form action = "addOrder" method = "GET" class="add">
+                        <button>Оформить заказ</button>
+                    </form>
                 </div>
             </div>
 
@@ -116,6 +122,9 @@
 
         </div>
     </footer>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+<script src="js/header.js"></script>
 
 </body>
 </html>

@@ -16,7 +16,7 @@
 <body>
 
 <header class="header">
-    <div class="container_1">
+    <div class="container_1" id="content">
         <div class="header_inner">
             <a href="http://localhost:8080/tomsite_war/index.jsp">
                 <img class="header_logo" src="img/other/logo.png" alt="">
@@ -24,7 +24,7 @@
         </div>
 
         <nav class="nav" id="nav">
-            <a class="nav_link" href="exhibitions.html" data-scroll="#">Выставки</a>
+            <a class="nav_link" href="exhibitions.jsp" data-scroll="#">Выставки</a>
             <a class="nav_link" href="bio.html" data-scroll="#">Биография</a>
             <a class="nav_link" href="jsp/store.jsp" data-scroll="#">Магазин</a>
             <a class="nav_link" href="contacts.html" data-scroll="#">Контакты</a>
@@ -36,7 +36,7 @@
     
     <div class="intro">
         <div class="container_1">
-            <div class="pre_logo"></div>
+            <div class="pre_logo" id="point"></div>
             <div class="logo">
                 <h1 class="logo_text">Товары</h1>
             </div>
@@ -66,13 +66,18 @@
                     %>
                     <tr>
                         <td class="custom_c"><%=counter%></td>
-                        <td><%=products.get(i).getName()%></td>
+                        <td class="prod">
+                            <form action="${pageContext.servletContext.contextPath}/gotoProd" method="GET">
+                                <input type="submit" class="goto" value="<%=products.get(i).getName()%>">
+                                <input type="hidden" name="htmlContent" value="<%=products.get(i).getTag()%>">
+                            </form>
+                        </td>
                         <td><%=products.get(i).getTag()%></td>
                         <td class="custom_c"><%=products.get(i).getPrice()%> $</td>
                         <td class="custom_c"><%=products.get(i).getDate()%></td>
                         <td class="custom_c"><%=products.get(i).getCount()%></td>
                         <td>
-                            <form action="delProd" method="GET">
+                            <form action="delProd" method="POST">
                                 <input type="submit" class="del" value="Удалить">
                                 <input type="hidden" name="prodTag" value="<%=products.get(i).getTag()%>">
                             </form>
@@ -81,7 +86,7 @@
                         <%  }
                         %>
                 </table>
-                <form action="addProd" method="GET">
+                <form action="addProd" method="GET" class="add">
                     <button>Добавить товар</button>
                 </form>
 
@@ -107,6 +112,9 @@
 
     </div>
 </footer>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+<script src="js/header.js"></script>
 
 </body>
 </html>

@@ -2,7 +2,7 @@ package servlets.users;
 
 import interfaces.UsersRepository;
 import repository.DataRepositoryJdbc;
-import repository.SignUpServiceImpl;
+import service.SignUpServiceImpl;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -40,7 +40,7 @@ public class AdminRegServlet extends HttpServlet {
         String result, status;
 
         if (usersRepository.findUserByEmail(email)) {
-            result = "Админ с почтой " + email + " уже зарегестрирован"; status = "Регестрация провалена";
+            result = "Админ с почтой " + email + " уже зарегистрирован"; status = "Регистрация провалена";
 
             request.setAttribute("resultOfAut", result);
             request.setAttribute("status", status);
@@ -61,7 +61,7 @@ public class AdminRegServlet extends HttpServlet {
                 request.setAttribute("adminEmail", email);
                 request.getRequestDispatcher("/jsp/service.jsp").forward(request, response);
             } else {
-                result = "Проверте введенные данные"; status = "Регестрация провалена";
+                result = "Проверте введенные данные"; status = "Регистрация провалена";
 
                 request.setAttribute("resultOfAut", result);
                 request.setAttribute("status", status);
@@ -69,12 +69,12 @@ public class AdminRegServlet extends HttpServlet {
             }
 
         } else {
-            result = "В предоставлении прав отказано, неверный код идентификации"; status = "Регестрация провалена";
+            result = "В предоставлении прав отказано, неверный код идентификации"; status = "Регистрация провалена";
 
             request.setAttribute("resultOfAut", result);
             request.setAttribute("status", status);
             request.getRequestDispatcher("/jsp/result.jsp").forward(request, response);
         }
-
     }
+
 }

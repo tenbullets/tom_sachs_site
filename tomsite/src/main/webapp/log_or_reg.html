@@ -22,7 +22,7 @@
         </div>
 
         <nav class="nav" id="nav">
-            <a class="nav_link" href="exhibitions.html" data-scroll="#">Выставки</a>
+            <a class="nav_link" href="jsp/exhibitions.jsp" data-scroll="#">Выставки</a>
             <a class="nav_link" href="bio.html" data-scroll="#">Биография</a>
             <a class="nav_link" href="jsp/store.jsp" data-scroll="#">Магазин</a>
             <a class="nav_link" href="contacts.html" data-scroll="#">Контакты</a>
@@ -30,32 +30,43 @@
         </nav>
     </div>
 </header>
-    
-    <div class="basic">
-        <div class="container_1">
-            <div class="pre_logo"></div>
 
-            <div class="logo">
-                <h1 class="logo_text">Аккаунт</h1>
+<div class="basic">
+    <div class="container_1">
+        <div class="pre_logo"></div>
+
+        <div class="block">
+            <h1 class="block_title">Зарегистрируйтесь или войдите</h1>
+
+            <div class="text">
+                <h2 class="block_text">
+                    Вы сможете удобно совершать покупки,
+                    а заказы будут синхронизироваться на всех устройствах,
+                    с которых вы заходите в магазин
+                </h2>
+                <h2 class="block_text">Продолжая, вы принимаете условия</h2>
+                <a class="about_link" href="about_persdata.html">//cогласие на обработку персональных данных</a>
             </div>
 
-            <h1 class="title">Чтобы совершать покупки войдите или зарегестрируйтесь на нашем сайте</h1>
+            <div class="text">
+                <h2 class="block_text">Если возникли проблемы со входом, то просим оповестить нас </h2>
+                <a class="about_link" href="mailto:lnayc368@gmail.com">service365@gmail.com</a>
+                <a class="about_link" href="https://t.me/zhertvapropagandynolana">telegram</a>
+            </div>
 
-            <div class="basic_inner">
-                <div class="block">
-                    <form action="introReg" method="POST">
-                        <button>Перейти к регистрации</button>
-                    </form>
-                </div>
-                <div class="block">
-                    <form action="introAuth" method="POST">
-                        <button>Войти в профиль</button>
-                    </form>
-                </div>
+            <div class="action">
+                <form action="introReg" method="POST">
+                    <button>Перейти к регистрации</button>
+                </form>
+
+                <form action="introAuth" method="POST">
+                    <button>Войти в профиль</button>
+                </form>
             </div>
 
         </div>
     </div>
+</div>
     
     <footer class="footer">        
         <div class="container_1">
@@ -80,7 +91,7 @@
             </div>
 
         </div>
-    </footer> 
+    </footer>
 
 </body>
 </html>

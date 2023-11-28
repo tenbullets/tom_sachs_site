@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/addExh.css">
+    <link rel="shortcut icon" href="img/other/icon.png" />
+    <title>Сервис</title>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="container_1" id="content">
+        <div class="header_inner">
+            <a href="http://localhost:8080/tomsite_war/index.jsp">
+                <img class="header_logo" src="img/other/logo.png" alt="">
+            </a>
+        </div>
+
+        <nav class="nav" id="nav">
+            <a class="nav_link" href="jsp/exhibitions.jsp" data-scroll="#">Выставки</a>
+            <a class="nav_link" href="bio.html" data-scroll="#">Биография</a>
+            <a class="nav_link" href="jsp/store.jsp" data-scroll="#">Магазин</a>
+            <a class="nav_link" href="contacts.html" data-scroll="#">Контакты</a>
+            <a class="nav_link" href="log_or_reg.html" data-scroll="#">Аккаунт</a>
+        </nav>
+    </div>
+</header>
+    
+    <div class="intro">
+        <div class="container_1">
+            <div class="pre_logo"></div>
+            <div class="logo">
+                <h1 class="logo_text">Разместить выставку</h1>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="basic">
+        <div class="container_1">
+            
+            <div class="basic_inner">
+                <form action="addExh" method="POST" enctype="multipart/form-data">
+            
+                    <div class="block">
+                        <h1 class="title">Введите данные о выставке</h1>
+
+                        <label>Название</label>
+                        <input name="name" maxlength="200">
+
+                        <label>Тэг</label>
+                        <input name="tag" maxlength="40">
+
+                        <label>Место проведения</label>
+                        <input name="place" maxlength="150">
+
+                        <label>Сроки проведения (DD.MM.YYYY - DD.MM.YYYY)</label>
+                        <input name="date" maxlength="23">
+
+                        <label>Краткое описание</label>
+                        <textarea maxlength="2000" name="sDesc" class="shortDesc"></textarea></p>
+                
+                        <label>Расскажите о выставке</label>
+                        <textarea maxlength="16000" name="Desc"></textarea></p>
+                    </div>
+
+                    <div class="block">
+                        <h1 class="title">Добавьте фото выставки</h1>
+
+                        <p class="desc">Фото должны соответствовать формату 5 &#215 4 / 4 &#215 5 / 1 &#215 1</p>
+                        <p class="desc">Доступные форматы: JPG, JPEG, PNG</p>
+                        <p class="desc">Размер каждого фото не более 10 Мбайт</p>
+                        <p class="desc">Минимум 4 фото</p>
+
+                       <div class="download" style="margin-top: 23px;">
+                            <input type="file" name="img1" accept=".jpg, .jpeg, .png" class="file-input-1" id="file-input" style="margin-top: 6px;">
+                            <input name="cap-1" maxlength="70" class="img_cap" placeholder="подпись">
+                       </div>
+
+                       <div class="download">
+                            <input type="file" name="img2" accept=".jpg, .jpeg, .png" class="file-input-2" id="file-input">
+                            <input name="cap-2" maxlength="70" class="img_cap" placeholder="подпись">
+                       </div>
+
+                       <div class="download">
+                            <input type="file" name="img3" accept=".jpg, .jpeg, .png" class="file-input-3" id="file-input">
+                            <input name="cap-3" maxlength="70" class="img_cap" placeholder="подпись">
+                       </div>
+
+                       <div class="download">
+                            <input type="file" name="img4" accept=".jpg, .jpeg, .png" class="file-input-4" id="file-input">
+                            <input name="cap-4" maxlength="70" class="img_cap" placeholder="подпись">
+                       </div>
+
+                       <div class="download">
+                            <input type="file" name="img5" accept=".jpg, .jpeg, .png" class="file-input-5" id="file-input">
+                            <input name="cap-5" maxlength="70" class="img_cap" placeholder="подпись">
+                       </div>
+
+                        <div class="download">
+                            <input type="file" name="img6" accept=".jpg, .jpeg, .png" class="file-input-6" id="file-input">
+                            <input name="cap-6" maxlength="70" class="img_cap" placeholder="подпись">
+                        </div>
+                    </div>
+
+                    <button>Разместить</button>
+   
+                </form>
+            </div>
+                
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container_1">
+    
+            <div class="footer_inner">
+                <div class="footer_block">
+                    <p class="footer_title_text">Автор Сайта</p>
+                    <a class="footer_main_text" href="https://t.me/zhertvapropagandynolana">telegram</a>
+                    <a class="footer_main_text" href="https://instagram.com/zhertvapropagandynolana?igshid=NTc4MTIwNjQ2YQ==">instagram</a>
+                </div>
+                <div class="footer_block_2">
+                    <img class="block_2_img" src="img/other/footer_img_1.jpg" alt="">
+                </div>
+            </div>
+    
+        </div>
+    </footer>
+
+</body>
+</html>

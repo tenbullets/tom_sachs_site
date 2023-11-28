@@ -14,7 +14,7 @@
 <body>
 
 <header class="header">
-    <div class="container_1">
+    <div class="container_1" id="content">
         <div class="header_inner">
             <a href="http://localhost:8080/tomsite_war/index.jsp">
                 <img class="header_logo" src="img/other/logo.png" alt="">
@@ -34,7 +34,7 @@
     
     <div class="intro">
         <div class="container_1">
-            <div class="pre_logo"></div>
+            <div class="pre_logo" id="point"></div>
             <div class="logo">
                 <h1 class="logo_text">Личный кабинет</h1>
             </div>
@@ -46,23 +46,56 @@
         <div class="container_1">
             <div class="basic_inner">
                 <div class="block">
-                    <% String name = (String) request.getAttribute("username");%>
-                    <h1 class="username"><%=name%></h1>
 
-                    <% String email = (String) request.getAttribute("user_email");%>
-                    <h2 class="email"><%=email%></h2>
+                    <div class="info">
+                        <img class="pic" src="img/other/pip.png" alt="" align="left">
 
-                    <a class="goto" href="jsp/store.jsp" data-scroll="#">Магазин</a>
+                        <% String name = (String) request.getAttribute("username");%>
+                        <h1 class="username"><%=name%></h1>
 
-                    <form action="bucketPage" method="POST">
-                        <button class="goto">Корзина (${cookie.get("count").value})</button>
-                    </form>
+                        <% String email = (String) request.getAttribute("user_email");%>
+                        <h2 class="email"><%=email%></h2>
 
-                    <a class="goto" href="">Заказы</a>
+                    </div>
 
-                    <form action="exitPage" method="POST">
-                        <button class="goto">Выйти</button>
-                    </form>
+
+
+<%--                    <a class="goto" href="jsp/store.jsp" data-scroll="#">Магазин</a>--%>
+
+<%--                    <form action="bucketPage" method="POST">--%>
+<%--                        <button class="goto">Корзина (${cookie.get("count").value})</button>--%>
+<%--                    </form>--%>
+
+<%--                    <a class="goto" href="">Заказы</a>--%>
+
+<%--                    <form action="exitPage" method="POST">--%>
+<%--                        <button class="goto">Выйти</button>--%>
+<%--                    </form>--%>
+
+                    <div class="actions">
+                        <div class="act_block">
+                            <a class="goto" href="jsp/store.jsp" data-scroll="#">Магазин</a>
+                        </div>
+
+                        <div class="act_block">
+                            <form action="bucketPage" method="POST">
+                                <button class="goto">Корзина</button>
+                            </form>
+                        </div>
+
+                        <div class="act_block">
+                            <form action="userOrders" method="GET">
+                                <button class="goto">Заказы</button>
+                            </form>
+                        </div>
+
+                        <div class="act_block">
+                            <form action="exitPage" method="POST">
+                                <button class="goto_exit">Выйти</button>
+                            </form>
+                        </div>
+
+                    </div>
                 </div>
     
                 <div class="block_2">
@@ -71,7 +104,7 @@
                     <a class="about_link" href="about_persdata.html">Согласие на обработку персональных данных</a>
 
                     <h1 class="title">Нужна помощь? Свяжитесь с нами</h1>
-                    <a class="about_link" href="mailto:lnayc368@gmail.com">lnayc368@gmail.com</a>
+                    <a class="about_link" href="mailto:service365@gmail.com">service365@gmail.com</a>
                     <a class="about_link" href="https://t.me/zhertvapropagandynolana">telegram</a>
                 </div>
             </div>
@@ -103,6 +136,9 @@
 
     </div>
 </footer>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+<script src="js/header.js"></script>
 
 </body>
 </html>

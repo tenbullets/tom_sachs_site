@@ -1,6 +1,8 @@
-<%@ page import="java.util.Random" %>
 <%@ page import="java.util.List" %>
-<%@ page import="repository.StoreRepository" %>
+<%@ page import="repository.StoreRepositoryJdbc" %>
+<%@ page import="models.Product" %>
+<%@ page import="models.Exh" %>
+<%@ page import="repository.ExhRepositoryJdbc" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +19,7 @@
 <body>
 
     <header class="header">
-        <div class="container_1">
+        <div class="container_1" id="content">
             <div class="header_inner">
                 <a href="http://localhost:8080/tomsite_war/index.jsp">
                     <img class="header_logo" src="img/other/logo.png" alt="">
@@ -25,7 +27,7 @@
             </div>
 
             <nav class="nav" id="nav">
-                <a class="nav_link" href="exhibitions.html" data-scroll="#">Выставки</a>
+                <a class="nav_link" href="jsp/exhibitions.jsp" data-scroll="#">Выставки</a>
                 <a class="nav_link" href="bio.html" data-scroll="#">Биография</a>
                 <a class="nav_link" href="jsp/store.jsp" data-scroll="#">Магазин</a>
                 <a class="nav_link" href="contacts.html" data-scroll="#">Контакты</a>
@@ -34,7 +36,7 @@
         </div>
     </header>
 
-    <div class="pre_intro"></div>
+    <div class="pre_intro" id="point"></div>
     <div class="intro">
         <div class="container_1">
             <img class="logo_img" src="img/other/tom.jpg" align="left">
@@ -55,65 +57,45 @@
 
     <div class="basic">
         <div class="container_1">
-            <div class="basic_text">Обновление В Магазине</div>
-            <div class="basic_pic">
+            <div class="basic_text" style="margin-bottom: 10px">Обновление В Магазине</div>
+
+            <%
+                List<Product> update = (List<Product>) config.getServletContext().getAttribute("update");
+                StoreRepositoryJdbc storeRepository = (StoreRepositoryJdbc) config.getServletContext().getAttribute("storeRep");
+
+            %>
+            <div class="store_inner">
                 <%
-                    StoreRepository storeRepository = (StoreRepository) config.getServletContext().getAttribute("storeRep");
-                    List<String> bag = storeRepository.getImgs("bag", storeRepository.getImgsSource("bag"));
+                    for (int i = 0; i < update.size(); i++) {
+                        List<String> imgs = storeRepository.getImgs(update.get(i).getTag(), storeRepository.getImgsSource(update.get(i).getTag()));
+
                 %>
 
-                <div class="change-photos">
-                    <div class="change-photo">
-                        <img class="store_img" src="<%=bag.get(0)%>" alt="">
-                    </div>
-                    <div class="change-photo">
-                        <img class="store_img" src="<%=bag.get(1)%>" alt="">
-                    </div>
-                    <form action="gotoProd" method="GET">
-                        <input type="submit" class="product" value="Сумка для MacBook">
-                        <input type="hidden" name="htmlContent" value="bag">
-                        <p class="price">275 $</p>
-                    </form>
-                </div>
+                <div class="block">
 
+                    <div class="change-photos">
+                        <div class="change-photo">
+                            <img class="block_img" src="<%=imgs.get(0)%>" alt="">
+                        </div>
+                        <div class="change-photo">
+                            <img class="block_img" src="<%=imgs.get(1)%>" alt="">
+                        </div>
+                    </div>
+
+                    <form action="${pageContext.servletContext.contextPath}/gotoProd" method="GET">
+                        <input type="submit" class="product" value="<%=update.get(i).getName()%>">
+                        <input type="hidden" name="htmlContent" value="<%=update.get(i).getTag()%>">
+                        <p class="price"><%=update.get(i).getPrice()%> $</p>
+                    </form>
+
+                </div>
                 <%
-                    List<String> spaceships = storeRepository.getImgs("spaceships", storeRepository.getImgsSource("spaceships"));
+                    }
                 %>
 
-                <div class="change-photos">
-                    <div class="change-photo">
-                        <img class="store_img" src="<%=spaceships.get(0)%>" alt="">
-                    </div>
-                    <div class="change-photo">
-                        <img class="store_img" src="<%=spaceships.get(1)%>" alt="">
-                    </div>
-                    <form action="gotoProd" method="GET">
-                        <input type="submit" class="product" value="Книга Spaceships">
-                        <input type="hidden" name="htmlContent" value="spaceships">
-                        <p class="price">65 $</p>
-                    </form>
-                </div>
-
-                <%
-                    List<String> note = storeRepository.getImgs("note", storeRepository.getImgsSource("note"));
-                %>
-    
-                <div class="change-photos">
-                    <div class="change-photo">
-                        <img class="store_img" src="<%=note.get(0)%>" alt="">
-                    </div>
-                    <div class="change-photo">
-                        <img class="store_img" src="<%=note.get(1)%>" alt="">
-                    </div>
-                    <form action="gotoProd" method="GET">
-                        <input type="submit" class="product" value="Блокнот Ten Bullets">
-                        <input type="hidden" name="htmlContent" value="note">
-                        <p class="price">25 $</p>
-                    </form>
-                </div>
             </div>
 
-            <div class="basic_text">Действующие Выставки</div>
+            <div class="basic_text" style="margin-top: 17px">Действующие Выставки</div>
 
             <div class="basic_inner">
                 <img class="exh_pic" src="img/other/exh.jpg" align="left">
@@ -131,42 +113,55 @@
                 </p>
             </div>
 
+            <%
+                List<Exh> exhUpdate = (List<Exh>) config.getServletContext().getAttribute("exhUpdate");
+                ExhRepositoryJdbc repository = (ExhRepositoryJdbc) config.getServletContext().getAttribute("ExhRep");
 
-            <div class="basic_text">Прошедшие Выставки</div>
-            <div class="basic_pic">
-                <div class="basic_itm">
-<!--                    <a href="html/exhibitions.html">-->
-<!--                        <img class="basic_img" src="img/timeline.jpg">-->
-<!--                        <div class="itm_text">TIMELINE</div>-->
-<!--                    </a>-->
+            %>
 
-                    <%
-                        String[] exh1 = {"img/other/timeline_1.jpg", "img/other/timeline_2.jpg"};
-                        String[] exh2 = {"img/other/rare_earths_1.jpg", "img/other/rare_earths_2.jpg"};
-                        String[] exh3 = {"img/other/spaceships_1.jpg", "img/other/spaceships_2.jpg"};
-                        Random rand = new Random();
-                        int i = rand.nextInt(2); int j = rand.nextInt(2); int k = rand.nextInt(2);
-                    %>
 
-                    <img class="basic_img" src="<%=exh1[i]%>">
-                    <div class="itm_text">TIMELINE</div>
+            <div class="basic_text" style="margin-bottom: 10px">Прошедшие Выставки</div>
+
+            <%
+                String style = "";
+                for (int i = 0; i < exhUpdate.size(); i++) {
+                    if(i == exhUpdate.size() - 1) style = "style=\"border-bottom: none\"";
+                    if(i == 0) style = "style=\"margin-top: 38px\"";
+                    String tag = exhUpdate.get(i).getTag();
+                    List<String> imgs = repository.getImgs(tag, repository.getImgsSource(tag));
+            %>
+
+            <div class="exhs" <%=style%>>
+                <div class="exh_block">
+                    <img class="exh_img" src="<%=imgs.get(0)%>" alt="">
                 </div>
+                <div class="exh_info">
+                    <div class="info_block_1">
 
-                <div class="basic_itm">
-                    <img class="basic_img" src="<%=exh2[j]%>">
-                    <div class="itm_text">SPACE PROGRAM «RARE EARTHS»</div>
-                </div>
+                        <form action="${pageContext.servletContext.contextPath}/gotoExh" method="GET">
+                            <input type="submit" class="exh_title_1" value="<%=exhUpdate.get(i).getName()%>">
+                            <input type="hidden" name="tag" value="<%=exhUpdate.get(i).getTag()%>">
+                        </form>
 
-                <div class="basic_itm">
-                    <img class="basic_img" src="<%=exh3[k]%>">
-                    <div class="itm_text">SPACESHIPS</div>
+                        <p class="info_text"><%=exhUpdate.get(i).getPlace()%></p>
+                        <p class="info_text"><%=exhUpdate.get(i).getEventDates()%></p>
+                    </div>
+                    <div class="info_block_2">
+                        <h1 class="exh_title_2">О чем</h1>
+                        <p class="about"><%=exhUpdate.get(i).getS_description()%></p>
+                    </div>
                 </div>
             </div>
-                
+
+            <%
+                    style = "";
+                }
+            %>
+
         </div>
     </div>
 
-    <footer class="footer">        
+    <footer class="footer">
         <div class="container_1">
             <div class="footer_img"></div>
 
@@ -189,7 +184,10 @@
             </div>
 
         </div>
-    </footer> 
+    </footer>
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+    <script src="js/header.js"></script>
 
 </body>
 </html>

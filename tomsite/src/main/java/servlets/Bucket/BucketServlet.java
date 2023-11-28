@@ -1,8 +1,8 @@
 package servlets.bucket;
 
-import interfaces.BucketCookie;
-import repository.BucketCookieJdbc;
-import repository.StoreRepository;
+import interfaces.BucketService;
+import service.BucketServiceImpl;
+import repository.StoreRepositoryJdbc;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -12,18 +12,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 @WebServlet("/bucketPage")
 public class BucketServlet extends HttpServlet {
-
-    private BucketCookie bucketCookie;
-    private StoreRepository storeRepository;
+    private BucketService bucketCookie;
+    private StoreRepositoryJdbc storeRepository;
 
     @Override
     public void init(ServletConfig config) {
-        storeRepository = (StoreRepository) config.getServletContext().getAttribute("storeRep");
-        bucketCookie = new BucketCookieJdbc();
+        storeRepository = (StoreRepositoryJdbc) config.getServletContext().getAttribute("storeRep");
+        bucketCookie = new BucketServiceImpl();
     }
 
     @Override
@@ -35,7 +33,6 @@ public class BucketServlet extends HttpServlet {
             String value = bucketCookie.getProd(cookies);
             prod = value.split("_");
         }
-
 
         request.setAttribute("products", prod);
         request.setAttribute("storeRep", storeRepository);

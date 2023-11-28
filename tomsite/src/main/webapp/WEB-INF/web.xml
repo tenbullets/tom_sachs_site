@@ -64,7 +64,7 @@
 
     <servlet>
         <servlet-name>addProd</servlet-name>
-        <servlet-class>servlets.store.ProdAddServlet</servlet-class>
+        <servlet-class>servlets.store.AddProdServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>addProd</servlet-name>
@@ -73,14 +73,55 @@
 
     <servlet>
         <servlet-name>prodList</servlet-name>
-        <servlet-class>servlets.store.AllProdServlet</servlet-class>
+        <servlet-class>servlets.store.ProdListServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>prodList</servlet-name>
         <url-pattern>/allProd</url-pattern>
     </servlet-mapping>
 
-    <!-- AUTH FILTER-->
+
+    <!-- Exh -->
+
+    <servlet>
+        <servlet-name>exhList</servlet-name>
+        <servlet-class>servlets.exhs.ExhListServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>exhList</servlet-name>
+        <url-pattern>/exhList</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>addExh</servlet-name>
+        <servlet-class>servlets.exhs.AddExhServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addExh</servlet-name>
+        <url-pattern>/addExh</url-pattern>
+    </servlet-mapping>
+
+    <!-- Orders -->
+
+    <servlet>
+        <servlet-name>ordersListAd</servlet-name>
+        <servlet-class>servlets.orders.OrdersListServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ordersListAd</servlet-name>
+        <url-pattern>/ordersList</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>orderAd</servlet-name>
+        <servlet-class>servlets.orders.GotoOrderAdServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>orderAd</servlet-name>
+        <url-pattern>/gotoOrderAd</url-pattern>
+    </servlet-mapping>
+
+    <!-- AUTH FILTER -->
 
     <filter>
         <filter-name>AuthFilter</filter-name>
@@ -146,6 +187,26 @@
     <filter-mapping>
         <filter-name>UserTypeFilter</filter-name>
         <servlet-name>prodList</servlet-name>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>UserTypeFilter</filter-name>
+        <servlet-name>exhList</servlet-name>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>UserTypeFilter</filter-name>
+        <servlet-name>addExh</servlet-name>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>UserTypeFilter</filter-name>
+        <servlet-name>ordersListAd</servlet-name>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>UserTypeFilter</filter-name>
+        <servlet-name>orderAd</servlet-name>
     </filter-mapping>
 
 

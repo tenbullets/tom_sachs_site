@@ -1,9 +1,9 @@
 package servlets.bucket;
 
 import models.Product;
-import interfaces.BucketCookie;
-import repository.BucketCookieJdbc;
-import repository.StoreRepository;
+import interfaces.BucketService;
+import service.BucketServiceImpl;
+import repository.StoreRepositoryJdbc;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -16,45 +16,56 @@ import java.util.List;
 
 public class AddBucketServlet extends HttpServlet {
 
-    private StoreRepository storeRepository;
-    private BucketCookie bucketCookie;
+    private StoreRepositoryJdbc storeRepository;
+    private BucketService bucketCookie;
     int i;
 
     @Override
     public void init(ServletConfig config) {
-        storeRepository = (StoreRepository) config.getServletContext().getAttribute("storeRep");
-        bucketCookie = new BucketCookieJdbc();
+        storeRepository = (StoreRepositoryJdbc) config.getServletContext().getAttribute("storeRep");
+        bucketCookie = new BucketServiceImpl();
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String tag = request.getParameter("product");
+        String value;
         Cookie[] inputCookie = (request.getCookies());
 
         if(!bucketCookie.cookieIsReal(inputCookie, "prod")) {
             bucketCookie.addCookie("prod", tag, response);
             i = 1;
         } else {
-            String value = bucketCookie.getProd(inputCookie) + "_" + tag;
+            value = bucketCookie.getProd(inputCookie) + "_" + tag;
             bucketCookie.addCookie("prod", value, response);
             i = bucketCookie.getCountOfProducts(value);
         }
 
-        Product product = storeRepository.getProduct(tag);
-        List<String> imgs = storeRepository.getImgs(tag, storeRepository.getImgsSource(tag));
+        Product prod = storeRepository.getProduct(tag);
+        if(prod.getCount() == 0) {
+            String result = "Невозможно добавить товар в корзину", status = "Провалено";
+            request.setAttribute("resultOfAut", result);
+            request.setAttribute("status", status);
+            request.getRequestDispatcher("/jsp/result.jsp").forward(request, response);
+        } else {
+            storeRepository.addProdToCart(tag);
 
-        request.setAttribute("tag", tag);
-        request.setAttribute("name", product.getName());
-        request.setAttribute("price", String.valueOf(product.getPrice()));
-        request.setAttribute("description", product.getDescription());
-        request.setAttribute("imgs", imgs);
-        request.setAttribute("count", String.valueOf(product.getCount()));
+            Product updateProd = storeRepository.getProduct(tag);
+            List<String> imgs = storeRepository.getImgs(tag, storeRepository.getImgsSource(tag));
 
-        String count = Integer.toString(i);
-        bucketCookie.addCookie("count", count, response);
-        i++;
+            request.setAttribute("tag", tag);
+            request.setAttribute("name", updateProd.getName());
+            request.setAttribute("price", String.valueOf(updateProd.getPrice()));
+            request.setAttribute("description", updateProd.getDescription());
+            request.setAttribute("imgs", imgs);
+            request.setAttribute("count", String.valueOf(updateProd.getCount()));
 
-        request.getRequestDispatcher("/jsp/product.jsp").forward(request, response);
+            String count = Integer.toString(i);
+            bucketCookie.addCookie("count", count, response);
+            i++;
+
+            request.getRequestDispatcher("/jsp/product.jsp").forward(request, response);
+        }
     }
 
 }

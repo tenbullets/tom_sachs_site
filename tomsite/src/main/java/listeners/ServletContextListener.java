@@ -3,14 +3,15 @@ package listeners;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.annotation.WebListener;
+
+import interfaces.OrdersRepository;
 import interfaces.SignUpService;
 import interfaces.UsersRepository;
+import models.Exh;
 import models.Product;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import repository.DataRepositoryJdbc;
-import repository.SignUpServiceImpl;
-import repository.StoreRepository;
-import repository.UsersRepositoryJdbcImpl;
+import repository.*;
+import service.SignUpServiceImpl;
 
 import java.io.IOException;
 import java.util.List;
@@ -25,7 +26,6 @@ public class ServletContextListener implements javax.servlet.ServletContextListe
 
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
-
         ServletContext servletContext = servletContextEvent.getServletContext();
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
 
@@ -34,16 +34,17 @@ public class ServletContextListener implements javax.servlet.ServletContextListe
         dataSource.setPassword(DB_PASSWORD);
         dataSource.setUrl(DB_URL);
 
-        StoreRepository storeRepository = new StoreRepository(dataSource);
+        // Repository
+        StoreRepositoryJdbc storeRepository = new StoreRepositoryJdbc(dataSource);
         servletContext.setAttribute("storeRep", storeRepository);
-        List<Product> products;
-        try {
-            products = storeRepository.getAllProduct();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
 
-        UsersRepository usersRepository = new UsersRepositoryJdbcImpl(dataSource);
+        ExhRepositoryJdbc exhRepositoryJdbc = new ExhRepositoryJdbc(dataSource);
+        servletContext.setAttribute("ExhRep", exhRepositoryJdbc);
+
+        OrdersRepository ordersRepository = new OrderRepositoryJdbc(dataSource);
+        servletContext.setAttribute("orderRep", ordersRepository);
+
+        UsersRepository usersRepository = new UsersRepositoryJdbc(dataSource);
         servletContext.setAttribute("userRep", usersRepository);
 
         DataRepositoryJdbc dataRepository = new DataRepositoryJdbc(dataSource);
@@ -52,7 +53,39 @@ public class ServletContextListener implements javax.servlet.ServletContextListe
         SignUpService signUpService = new SignUpServiceImpl(dataRepository);
         servletContext.setAttribute("signUpService", signUpService);
 
+
+        List<Product> products;
+        try {
+            products = storeRepository.getAllProduct();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         servletContext.setAttribute("products", products);
+
+        List<Product> update;
+        try {
+            update = storeRepository.getProdUpdate(storeRepository.getAllProduct());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        servletContext.setAttribute("update", update);
+
+        List<Exh> list;
+        try {
+            list = exhRepositoryJdbc.getExhList();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        servletContext.setAttribute("exhs", list);
+
+        List<Exh> exhUpdate;
+        try {
+            exhUpdate = exhRepositoryJdbc.getExhUpdate(exhRepositoryJdbc.getExhList());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        servletContext.setAttribute("exhUpdate", exhUpdate);
+
      }
 
     @Override

@@ -55,7 +55,7 @@ public class AuthServlet extends HttpServlet {
                 request.getRequestDispatcher("/jsp/account.jsp").forward(request, response);
             } else {
                 httpSession.setAttribute("authenticated", false);
-                result = "Пользователь " + username + " не найден, проверте пароль и имя пользователя"; status = "Авторизация провалена";
+                result = "Пользователь " + username + " не найден, проверьте пароль и имя пользователя"; status = "Авторизация провалена";
 
                 request.setAttribute("resultOfAut", result);
                 request.setAttribute("status", status);

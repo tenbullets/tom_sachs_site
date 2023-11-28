@@ -16,7 +16,7 @@
 <body>
 
     <header class="header">
-        <div class="container_1">
+        <div class="container_1" id="content">
             <div class="header_inner">
                 <a href="http://localhost:8080/tomsite_war/index.jsp">
                     <img class="header_logo" src="img/other/logo.png" alt="">
@@ -24,7 +24,7 @@
             </div>
     
             <nav class="nav" id="nav">
-                <a class="nav_link" href="exhibitions.html" data-scroll="#">Выставки</a>
+                <a class="nav_link" href="exhibitions.jsp" data-scroll="#">Выставки</a>
                 <a class="nav_link" href="bio.html" data-scroll="#">Биография</a>
                 <a class="nav_link" href="jsp/store.jsp" data-scroll="#">Магазин</a>
                 <a class="nav_link" href="contacts.html" data-scroll="#">Контакты</a>
@@ -36,7 +36,7 @@
     
     <div class="intro">
         <div class="container_1">
-            <div class="pre_logo"></div>
+            <div class="pre_logo" id="point"></div>
             <div class="logo">
                 <h1 class="logo_text">Пользователи</h1>
             </div>
@@ -60,7 +60,9 @@
                     %>
                     <tr class="str">
                         <td><%=users.get(i).getUsername()%></td>
-                        <td><%=users.get(i).getEmail()%></td>
+                        <td>
+                            <a class="about_link" href="mailto:<%=users.get(i).getEmail()%>"><%=users.get(i).getEmail()%></a>
+                        </td>
                         <td>
                             <form action="delUser" method="GET">
                                 <input type="submit" class="del" value="Заблокировать">
@@ -77,7 +79,6 @@
                     <tr class="str">
                         <th>Имя</th>
                         <th>Почта</th>
-                        <th>Действие</th>
                     </tr>
 
                     <%
@@ -87,9 +88,8 @@
 
                     <tr class="str">
                         <td><%=admins.get(i).getUsername()%></td>
-                        <td><%=admins.get(i).getEmail()%></td>
                         <td>
-                            <a class="about_link" href="mailto:<%=admins.get(i).getEmail()%>">Отправить email</a>
+                            <a class="about_link" href="mailto:<%=admins.get(i).getEmail()%>"><%=admins.get(i).getEmail()%></a>
                         </td>
                     </tr>
 
@@ -118,6 +118,9 @@
     
         </div>
     </footer>
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+    <script src="js/header.js"></script>
 
 </body>
 </html>

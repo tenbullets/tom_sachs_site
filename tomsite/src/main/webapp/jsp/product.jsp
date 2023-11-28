@@ -31,7 +31,7 @@
             </div>
 
             <nav class="nav" id="nav">
-                <a class="nav_link" href="exhibitions.html" data-scroll="#">Выставки</a>
+                <a class="nav_link" href="jsp/exhibitions.jsp" data-scroll="#">Выставки</a>
                 <a class="nav_link" href="bio.html" data-scroll="#">Биография</a>
                 <a class="nav_link_2" href="jsp/store.jsp" data-scroll="#">Магазин</a>
                 <a class="nav_link" href="contacts.html" data-scroll="#">Контакты</a>
@@ -77,14 +77,22 @@
                     <h2 class="price"><%=price%> $</h2>
                     <h2 class="count">В наличии <%=count%> шт.</h2>
 
-                    <form action="addBucket" method="POST">
-                        <input class="addLink" type="submit" value="+ Корзину">
-                        <input type="hidden" name="product" value="<%=tag%>">
-                    </form>
+                    <div class="actions">
 
-                    <form action="bucketPage" method="POST">
-                        <button>Корзина</button>
-                    </form>
+                        <div class="act_block">
+                            <form action="addBucket" method="POST">
+                                <input class="addLink" type="submit" value="+ Корзину">
+                                <input type="hidden" name="product" value="<%=tag%>">
+                            </form>
+                        </div>
+
+                        <div class="act_block">
+                            <form action="bucketPage" method="POST">
+                                <button>Корзина</button>
+                            </form>
+                        </div>
+
+                    </div>
 
                     <div class="text">
                         <%=description%>
@@ -116,7 +124,8 @@
             </div>
 
         </div>
-    </footer> 
+    </footer>
+
 
 </body>
 </html>

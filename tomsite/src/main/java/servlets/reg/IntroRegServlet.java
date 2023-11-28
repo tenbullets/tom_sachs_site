@@ -17,6 +17,7 @@ public class IntroRegServlet extends HttpServlet {
     void delProdCookie(HttpServletResponse response) {
         Cookie prodCookie = new Cookie("prod", "");
         Cookie countCookie = new Cookie("count", "");
+
         response.addCookie(prodCookie);
         response.addCookie(countCookie);
         prodCookie.setMaxAge(0);

@@ -1,6 +1,9 @@
 <component name="InspectionProjectProfileManager">
   <profile version="1.0">
     <option name="myName" value="Project Default" />
+    <inspection_tool class="CommentedOutCode" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="minLines" value="10" />
+    </inspection_tool>
     <inspection_tool class="ConstantValue" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="DataFlowIssue" enabled="false" level="WARNING" enabled_by_default="false">
       <option name="SUGGEST_NULLABLE_ANNOTATIONS" value="false" />
@@ -8,8 +11,13 @@
     </inspection_tool>
     <inspection_tool class="DuplicatedCode" enabled="true" level="WEAK WARNING" enabled_by_default="true">
       <Languages>
-        <language minSize="126" name="Java" />
+        <language minSize="14" name="Style Sheets" />
+        <language minSize="151" name="Java" />
       </Languages>
+    </inspection_tool>
+    <inspection_tool class="ExtractMethodRecommender" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="minLength" value="914" />
+      <option name="maxParameters" value="1" />
     </inspection_tool>
     <inspection_tool class="FieldCanBeLocal" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="LossyEncoding" enabled="false" level="WARNING" enabled_by_default="false" />
@@ -19,6 +27,7 @@
     <inspection_tool class="SqlResolveInspection" enabled="false" level="ERROR" enabled_by_default="false" />
     <inspection_tool class="ThrowablePrintStackTrace" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="UNCHECKED_WARNING" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="UnnecessaryContinue" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="VulnerableLibrariesLocal" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="WrapperTypeMayBePrimitive" enabled="true" level="INFORMATION" enabled_by_default="true" />
   </profile>

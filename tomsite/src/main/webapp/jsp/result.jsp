@@ -14,23 +14,23 @@
 
 <body>
 
-<header class="header">
-    <div class="container_1">
-        <div class="header_inner">
-            <a href="http://localhost:8080/tomsite_war/index.jsp">
-                <img class="header_logo" src="img/other/logo.png" alt="">
-            </a>
-        </div>
+    <header class="header">
+        <div class="container_1">
+            <div class="header_inner">
+                <a href="http://localhost:8080/tomsite_war/index.jsp">
+                    <img class="header_logo" src="img/other/logo.png" alt="">
+                </a>
+            </div>
 
-        <nav class="nav" id="nav">
-            <a class="nav_link" href="exhibitions.html" data-scroll="#">Выставки</a>
-            <a class="nav_link" href="bio.html" data-scroll="#">Биография</a>
-            <a class="nav_link" href="jsp/store.jsp" data-scroll="#">Магазин</a>
-            <a class="nav_link" href="contacts.html" data-scroll="#">Контакты</a>
-            <a class="nav_link" href="log_or_reg.html" data-scroll="#">Аккаунт</a>
-        </nav>
-    </div>
-</header>
+            <nav class="nav" id="nav">
+                <a class="nav_link" href="exhibitions.jsp" data-scroll="#">Выставки</a>
+                <a class="nav_link" href="bio.html" data-scroll="#">Биография</a>
+                <a class="nav_link" href="jsp/store.jsp" data-scroll="#">Магазин</a>
+                <a class="nav_link" href="contacts.html" data-scroll="#">Контакты</a>
+                <a class="nav_link" href="log_or_reg.html" data-scroll="#">Аккаунт</a>
+            </nav>
+        </div>
+    </header>
 
     <div class="basic">
         <div class="container_1">
@@ -69,6 +69,9 @@
 
         </div>
     </footer>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+<script src="js/header.js"></script>
 
 </body>
 </html>

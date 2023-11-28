@@ -2,7 +2,7 @@ package servlets.reg;
 
 import interfaces.UsersRepository;
 import repository.DataRepositoryJdbc;
-import repository.SignUpServiceImpl;
+import service.SignUpServiceImpl;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,7 +36,7 @@ public class RegServlet extends HttpServlet {
         String result, status;
 
         if (usersRepository.findUserByEmail(email)) {
-            result = "Пользователь с почтой " + email + " уже зарегестрирован"; status = "Регестрация провалена";
+            result = "Пользователь с почтой " + email + " уже зарегистрирован"; status = "Регистрация провалена";
 
             request.setAttribute("resultOfAut", result);
             request.setAttribute("status", status);
@@ -58,7 +58,7 @@ public class RegServlet extends HttpServlet {
                 request.setAttribute("user_email", email);
                 request.getRequestDispatcher("/jsp/account.jsp").forward(request, response);
             } else {
-                result = "Пользователь не зарегестрирован, проверте введенные данные"; status = "Регестрация провалена";
+                result = "Пользователь не зарегистрирован, проверте введенные данные"; status = "Регистрация провалена";
 
                 request.setAttribute("resultOfAut", result);
                 request.setAttribute("status", status);

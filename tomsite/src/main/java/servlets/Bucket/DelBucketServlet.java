@@ -1,8 +1,8 @@
 package servlets.bucket;
 
-import interfaces.BucketCookie;
-import repository.BucketCookieJdbc;
-import repository.StoreRepository;
+import interfaces.BucketService;
+import service.BucketServiceImpl;
+import repository.StoreRepositoryJdbc;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -15,13 +15,13 @@ import java.io.IOException;
 
 @WebServlet("/del")
 public class DelBucketServlet extends HttpServlet {
-    private BucketCookie bucketCookie;
-    private StoreRepository storeRepository;
+    private BucketService bucketCookie;
+    private StoreRepositoryJdbc storeRepository;
 
     @Override
     public void init(ServletConfig config) {
-        bucketCookie = new BucketCookieJdbc();
-        storeRepository = (StoreRepository) config.getServletContext().getAttribute("storeRep");
+        bucketCookie = new BucketServiceImpl();
+        storeRepository = (StoreRepositoryJdbc) config.getServletContext().getAttribute("storeRep");
     }
 
     @Override
@@ -45,7 +45,10 @@ public class DelBucketServlet extends HttpServlet {
 
         bucketCookie.addCookie("count", resCountOfProd, response);
 
-        // обновляем этот щит
+        // возвращаем count в бд
+        storeRepository.delProdFromCart(tag);
+
+        // отправляем данные
         request.setAttribute("products", prodToBucket);
         request.setAttribute("storeRep", storeRepository);
         request.getRequestDispatcher("/jsp/bucket.jsp").forward(request, response);

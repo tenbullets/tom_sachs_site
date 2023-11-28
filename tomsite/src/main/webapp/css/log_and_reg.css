@@ -42,6 +42,22 @@ body {
     text-transform: uppercase;
 }
 
+.nav.fixed {
+    top: 0;
+    position: fixed;
+    background-color: rgba(255, 255, 255, 0.880);
+    backdrop-filter: blur(4px);
+    width: 1250px;
+    padding: 19px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.832);
+}
+
+.container_1.wid {
+    width: 100%;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
 .nav_link {
     text-decoration: none;
     font-family: 'Manrope', sans-serif;
@@ -64,6 +80,12 @@ body {
     color: #cc7a00;
     text-decoration: underline #cc7a00 1px;
     transition: opacity .1s linear;
+}
+
+.nav_link_2:hover {
+    color: black;
+    transition: 0.7s;
+    text-decoration: underline black 1px;
 }
 
 .nav_link:hover {
@@ -134,11 +156,18 @@ body {
 }
 
 
+
+
 .block {
-    padding-left: 15px;
-    height: 468px;
-    margin: 0 7px 0 7px;
-    width: 50%;
+    /* border-left: 1px solid black;
+    border-right: 1px solid black; */
+    padding-top: 40px;
+
+    border: 2px rgba(0, 0, 0, 0.175) solid;
+
+    height: auto;
+    margin: 40px auto 30px auto;
+    width: 70%;
     text-align: left;
     position: relative;
 }
@@ -148,33 +177,20 @@ body {
     display: flex;
 }
 
-.block_text {
-    cursor: default;
-    text-transform: uppercase;
-    font-size: 19px;
-    font-family: 'Manrope', sans-serif;
-    font-weight: 400;
-    color: white;
-    margin: 10px 0 26px 0;
-    background-color: #00000095;
-    width: 68%;
-    padding-left: 7px;
-}
 
 label {
-
     font-size: 16px;
     font-family: 'Manrope', sans-serif;
     font-weight: 400;
     color: black;
+    padding-left: 46px;
 
-    margin-left: 5px;
 }
 
 input {
     display: block;
     height: 30px;
-    width: 420px;
+    width: 90%;
     background-color: #b4b3b33d;
     padding: 0 5px;
 
@@ -185,7 +201,10 @@ input {
 
     margin-left: 0px;
     margin-top: 8px;
-    margin-bottom: 10px;
+    margin-bottom: 13px;
+
+    margin-right: auto;
+    margin-left: auto;
 
     border: none;
 }
@@ -197,7 +216,8 @@ input {
 
 button {
     text-transform: uppercase;
-    margin: 15px 5px 0px 0px;
+    margin: 43px auto 43px auto;
+    display: block;
     padding: 1px 35px;
     background-color: black;
     border: none;
@@ -207,6 +227,7 @@ button {
     font-size: 16px;
     font-family: 'Manrope', sans-serif;
     font-weight: 400;
+    border-radius: 4px;
 }
 
 button:hover {
@@ -216,7 +237,7 @@ button:hover {
 }
 
 .footer {
-    margin-top: 30px;
+    margin-top: 0;
 }
 
 .footer_img {

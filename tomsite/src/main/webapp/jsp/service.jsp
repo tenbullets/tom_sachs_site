@@ -22,7 +22,7 @@
         </div>
 
         <nav class="nav" id="nav">
-            <a class="nav_link" href="exhibitions.html" data-scroll="#">Выставки</a>
+            <a class="nav_link" href="exhibitions.jsp" data-scroll="#">Выставки</a>
             <a class="nav_link" href="bio.html" data-scroll="#">Биография</a>
             <a class="nav_link" href="jsp/store.jsp" data-scroll="#">Магазин</a>
             <a class="nav_link" href="contacts.html" data-scroll="#">Контакты</a>
@@ -74,11 +74,17 @@
                 </div>
 
                 <div class="act_block">
-                    <form action="exib" method="POST">
+                    <form action="exhList" method="GET">
                         <button class="goto">Выставки</button>
                     </form>
-                    <form action="addExib" method="POST">
+                    <form action="addExh" method="GET">
                         <button class="goto">Добавить Выставку</button>
+                    </form>
+                </div>
+
+                <div class="act_block">
+                    <form action="ordersList" method="GET">
+                        <button class="goto">Заказы</button>
                     </form>
                 </div>
 

@@ -41,6 +41,22 @@ body {
     text-transform: uppercase;
 }
 
+.nav.fixed {
+    top: 0;
+    position: fixed;
+    background-color: rgba(255, 255, 255, 0.880);
+    backdrop-filter: blur(4px);
+    width: 1250px;
+    padding: 19px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.832);
+}
+
+.container_1.wid {
+    width: 100%;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
 .nav_link {
     text-decoration: none;
     font-family: 'Manrope', sans-serif;
@@ -63,6 +79,12 @@ body {
     color: #cc7a00;
     text-decoration: underline #cc7a00 1px;
     transition: opacity .1s linear;
+}
+
+.nav_link_2:hover {
+    color: black;
+    transition: 0.7s;
+    text-decoration: underline black 1px;
 }
 
 .nav_link:hover {
@@ -151,7 +173,8 @@ th {
     font-family: 'Manrope', sans-serif;
     font-weight: 400;
     padding: 2px 40px 2px 15px;
-    margin: 2px 45px 2px 0x;
+    margin: 2px 45px 2px 0;
+    cursor: default;
 }
 
 td {
@@ -160,6 +183,7 @@ td {
     font-family: 'Manrope', sans-serif;
     font-weight: 300;
     padding: 2px 45px 2px 15px;
+    cursor: default;
 }
 
 
@@ -171,14 +195,13 @@ td {
     height: 25px;
     font-family: 'Manrope', sans-serif;
     font-weight: 400;
-    margin: 27px 0 0 0px;
     color: red;
     border: none;
     background: none;
     padding-left: 0;
 
-    margin-top: 0px;
-    margin-left: 0px;
+    margin-top: 0;
+    margin-left: 0;
 }
 
 .del:hover {

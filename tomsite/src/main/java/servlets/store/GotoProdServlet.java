@@ -1,7 +1,7 @@
 package servlets.store;
 
 import models.Product;
-import repository.StoreRepository;
+import repository.StoreRepositoryJdbc;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -14,35 +14,27 @@ import java.util.List;
 
 @WebServlet("/gotoProd")
 public class GotoProdServlet extends HttpServlet {
-    private StoreRepository storeRepository;
+    private StoreRepositoryJdbc storeRepository;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
-        storeRepository = (StoreRepository) config.getServletContext().getAttribute("storeRep");
+        storeRepository = (StoreRepositoryJdbc) config.getServletContext().getAttribute("storeRep");
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String name, price, description, img, tag, countOfProd;
+        String name, price, description, tag, countOfProd;
 
         String productTag = request.getParameter("htmlContent");
-        Product product = storeRepository.getProduct(productTag);
 
+        Product product = storeRepository.getProduct(productTag);
         name = product.getName();
         price = String.valueOf(product.getPrice());
         description = product.getDescription();
         tag = product.getTag();
         countOfProd = String.valueOf(product.getCount());
 
-//        System.out.println("tag " + tag);
-
-
         List<String> imgs = storeRepository.getImgs(tag, storeRepository.getImgsSource(tag));
-
-//        for (int i = 0; i < imgs.size(); i++) {
-//            System.out.println("///" + i);
-//            System.out.println(imgs.get(i));
-//        }
 
         request.setAttribute("tag", tag);
         request.setAttribute("name", name);
