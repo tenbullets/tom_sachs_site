@@ -15,7 +15,6 @@ import java.util.List;
 import org.apache.commons.io.FileUtils;
 
 public class StoreRepositoryJdbc implements StoreRepository {
-
     private static final String PROD = "select * from products";
     private final DataSource dataSource;
 
@@ -131,7 +130,6 @@ public class StoreRepositoryJdbc implements StoreRepository {
                         .date(resultSet.getString("date"))
                         .imgSource(resultSet.getString("imgs_source"))
                         .build();
-
                 products.add(prod);
             }
 
@@ -397,4 +395,5 @@ public class StoreRepositoryJdbc implements StoreRepository {
 
         return tags;
     }
+
 }

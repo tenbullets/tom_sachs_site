@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OrderRepositoryJdbc implements OrdersRepository {
-
     private static final String ORD = "select * from orders";
     private final DataSource dataSource;
 
@@ -208,6 +207,5 @@ public class OrderRepositoryJdbc implements OrdersRepository {
             System.out.println(ex.getMessage());
         }
     }
-
 
 }

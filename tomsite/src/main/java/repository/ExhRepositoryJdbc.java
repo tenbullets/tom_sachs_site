@@ -17,7 +17,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ExhRepositoryJdbc implements ExhRepository {
-
     private static final String EXH = "select * from exhibitions";
     private final DataSource dataSource;
 
@@ -95,7 +94,6 @@ public class ExhRepositoryJdbc implements ExhRepository {
             if(!(i == caps.size() - 1)) capsStr.append("/");
         }
 
-
         try {
             Connection conn = dataSource.getConnection();
 
@@ -111,7 +109,6 @@ public class ExhRepositoryJdbc implements ExhRepository {
             preparedStatement.setString(8, capsStr.toString());
             preparedStatement.setString(4, date);
             preparedStatement.setString(9, imgsDataSource);
-
             preparedStatement.executeUpdate();
 
             conn.close();
@@ -282,4 +279,5 @@ public class ExhRepositoryJdbc implements ExhRepository {
             throw new IllegalStateException(e);
         }
     }
+
 }

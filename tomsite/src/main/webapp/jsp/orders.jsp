@@ -82,24 +82,30 @@
         </div>
     </div>
 
-    
 
-    <footer class="footer">
-        <div class="container_1">
-    
-            <div class="footer_inner">
-                <div class="footer_block">
-                    <p class="footer_title_text">Автор Сайта</p>
-                    <a class="footer_main_text" href="https://t.me/zhertvapropagandynolana">telegram</a>
-                    <a class="footer_main_text" href="https://instagram.com/zhertvapropagandynolana?igshid=NTc4MTIwNjQ2YQ==">instagram</a>
-                </div>
-                <div class="footer_block_2">
-                    <img class="block_2_img" src="img/other/footer_img_1.jpg" alt="">
-                </div>
+
+<footer class="footer">
+    <div class="container_1">
+        <div class="footer_inner">
+            <div class="footer_block">
+                <p class="footer_title_text">Том Сакс</p>
+                <a class="footer_main_text" href="https://twitter.com/tom_sachs">twitter</a>
+                <a class="footer_main_text" href="https://www.youtube.com/user/tomsachsmovies">youtube</a>
+                <a class="footer_main_text" href="https://www.instagram.com/tomsachs/">instagram</a>
+                <a class="footer_main_text" href="https://tenbullets.com/">tenbullets.com</a>
             </div>
-    
+            <div class="footer_block">
+                <p class="footer_title_text">Автор Сайта</p>
+                <a class="footer_main_text" href="https://t.me/zhertvapropagandynolana">telegram</a>
+                <a class="footer_main_text" href="https://instagram.com/zhertvapropagandynolana?igshid=NTc4MTIwNjQ2YQ==">instagram</a>
+            </div>
+            <div class="footer_block_2">
+                <img class="block_2_img" src="img/other/footer_img_1.jpg" alt="">
+            </div>
         </div>
-    </footer>
+
+    </div>
+</footer>
 
 </body>
 </html>

@@ -25,7 +25,7 @@
         </div>
 
         <nav class="nav" id="nav">
-            <a class="nav_link" href="exhibitions.jsp" data-scroll="#">Выставки</a>
+            <a class="nav_link" href="jsp/exhibitions.jsp" data-scroll="#">Выставки</a>
             <a class="nav_link" href="bio.html" data-scroll="#">Биография</a>
             <a class="nav_link" href="jsp/store.jsp" data-scroll="#">Магазин</a>
             <a class="nav_link" href="contacts.html" data-scroll="#">Контакты</a>
@@ -54,8 +54,8 @@
                 <div class="info">
                     <h3 class="name"><%=order.getUniqueID()%></h3>
                     <h3 class="date"><%=order.getDate()%></h3>
-                    <h3 class="status">Статус: <%=order.getStatus()%></h3>
-                    <h3 class="price">Стоимость: <%=order.getPrice()%> $</h3>
+                    <h3 class="status"><%=order.getStatus()%></h3>
+                    <h3 class="price"><%=order.getPrice()%> $</h3>
                 </div>
                 
                 <table>
@@ -91,24 +91,30 @@
         </div>
     </div>
 
-    
 
-    <footer class="footer">
-        <div class="container_1">
-    
-            <div class="footer_inner">
-                <div class="footer_block">
-                    <p class="footer_title_text">Автор Сайта</p>
-                    <a class="footer_main_text" href="https://t.me/zhertvapropagandynolana">telegram</a>
-                    <a class="footer_main_text" href="https://instagram.com/zhertvapropagandynolana?igshid=NTc4MTIwNjQ2YQ==">instagram</a>
-                </div>
-                <div class="footer_block_2">
-                    <img class="block_2_img" src="img/other/footer_img_1.jpg" alt="">
-                </div>
+
+<footer class="footer">
+    <div class="container_1">
+        <div class="footer_inner">
+            <div class="footer_block">
+                <p class="footer_title_text">Том Сакс</p>
+                <a class="footer_main_text" href="https://twitter.com/tom_sachs">twitter</a>
+                <a class="footer_main_text" href="https://www.youtube.com/user/tomsachsmovies">youtube</a>
+                <a class="footer_main_text" href="https://www.instagram.com/tomsachs/">instagram</a>
+                <a class="footer_main_text" href="https://tenbullets.com/">tenbullets.com</a>
             </div>
-    
+            <div class="footer_block">
+                <p class="footer_title_text">Автор Сайта</p>
+                <a class="footer_main_text" href="https://t.me/zhertvapropagandynolana">telegram</a>
+                <a class="footer_main_text" href="https://instagram.com/zhertvapropagandynolana?igshid=NTc4MTIwNjQ2YQ==">instagram</a>
+            </div>
+            <div class="footer_block_2">
+                <img class="block_2_img" src="img/other/footer_img_1.jpg" alt="">
+            </div>
         </div>
-    </footer>
+
+    </div>
+</footer>
 
 </body>
 </html>

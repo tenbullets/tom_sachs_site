@@ -19,7 +19,6 @@ import java.util.Objects;
 public class UsersRepositoryJdbc implements UsersRepository {
     private final DataSource dataSource;
     private final PasswordEncoder passwordEncoder;
-
     private static final String USERS = "select * from users_2";
     private static final String UUID = "select * from uuid_2";
 
@@ -193,7 +192,7 @@ public class UsersRepositoryJdbc implements UsersRepository {
     }
 
     @Override
-    public boolean findUserByName(String username) throws SQLException {
+    public boolean findUserByName(String username) {
         try {
             Connection connection = dataSource.getConnection();
 
@@ -252,11 +251,7 @@ public class UsersRepositoryJdbc implements UsersRepository {
                         .role(resultSet.getString("role"))
                         .build();
 
-                if(
-                        user.getUsername().equals(username)
-                        && passwordEncoder.matches(password, user.getPassword())
-                        && user.getRole().equals("admin")
-                )
+                if(user.getUsername().equals(username) && passwordEncoder.matches(password, user.getPassword()) && user.getRole().equals("admin"))
                     return true;
             }
 
@@ -279,7 +274,6 @@ public class UsersRepositoryJdbc implements UsersRepository {
                         .username(resultSet.getString("username"))
                         .id(resultSet.getString("user_id"))
                         .build();
-
                 if (user.getUsername().equals(username)) return user.getId();
             }
 
@@ -313,4 +307,5 @@ public class UsersRepositoryJdbc implements UsersRepository {
             throw new IllegalStateException(e);
         }
     }
+
 }

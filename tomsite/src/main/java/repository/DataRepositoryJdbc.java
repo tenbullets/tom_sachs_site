@@ -9,9 +9,7 @@ import javax.sql.DataSource;
 import java.sql.*;
 
 public class DataRepositoryJdbc implements DataRepository {
-
     private final DataSource dataSource;
-
     public DataRepositoryJdbc(DataSource dataSource) {
         this.dataSource = dataSource;
     }
