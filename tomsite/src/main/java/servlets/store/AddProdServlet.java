@@ -18,10 +18,10 @@ import java.util.List;
 
 @MultipartConfig
 public class AddProdServlet extends HttpServlet {
-    ServletConfig config;
-    StoreRepositoryJdbc storeRepository;
-    StoreRepositoryJdbc updateRepository;
-    AddServiceImpl service;
+    private ServletConfig config;
+    private StoreRepositoryJdbc storeRepository;
+    private StoreRepositoryJdbc updateRepository;
+    private AddServiceImpl service;
 
     @Override
     public void init(ServletConfig config) throws ServletException {

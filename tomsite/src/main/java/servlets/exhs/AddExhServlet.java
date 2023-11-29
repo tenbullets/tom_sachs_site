@@ -18,10 +18,10 @@ import java.util.List;
 
 @MultipartConfig
 public class AddExhServlet extends HttpServlet {
-    ServletConfig config;
-    AddServiceImpl service;
-    ExhRepositoryJdbc repository;
-    ExhRepositoryJdbc updateRepository;
+    private ServletConfig config;
+    private AddServiceImpl service;
+    private ExhRepositoryJdbc repository;
+    private ExhRepositoryJdbc updateRepository;
 
     @Override
     public void init(ServletConfig config) throws ServletException {

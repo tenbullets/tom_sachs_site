@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ExitServlet extends HttpServlet {
     private BucketService bucketCookie;
-    StoreRepositoryJdbc storeRepository;
+    private StoreRepositoryJdbc storeRepository;
 
     @Override
     public void init(ServletConfig config) {
@@ -34,5 +34,4 @@ public class ExitServlet extends HttpServlet {
 
         request.getRequestDispatcher("log_or_reg.html").forward(request, response);
     }
-
 }

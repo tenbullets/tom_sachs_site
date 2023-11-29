@@ -55,7 +55,7 @@
 
     <servlet>
         <servlet-name>addAdmin</servlet-name>
-        <servlet-class>servlets.users.AdminRegServlet</servlet-class>
+        <servlet-class>servlets.reg.AdminRegServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>addAdmin</servlet-name>

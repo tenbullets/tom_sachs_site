@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" type="text/css" href="<%=application.getContextPath() %>/css/exhList.css" >
+    <link rel="stylesheet" type="text/css" href="<%=application.getContextPath() %>/css/exhList.css" >
     <link rel="shortcut icon" href="img/other/icon.png" />
     <title>Сервис</title>
 </head>
@@ -30,12 +30,13 @@
             <a class="nav_link" href="contacts.html" data-scroll="#">Контакты</a>
             <a class="nav_link" href="log_or_reg.html" data-scroll="#">Аккаунт</a>
         </nav>
+
     </div>
 </header>
     
     <div class="intro">
         <div class="container_1">
-            <div class="pre_logo"></div>
+            <div class="pre_logo" id="point"></div>
             <div class="logo">
                 <h1 class="logo_text">Выставки</h1>
             </div>
@@ -111,6 +112,9 @@
 
     </div>
 </footer>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+<script src="js/header.js"></script>
 
 </body>
 </html>

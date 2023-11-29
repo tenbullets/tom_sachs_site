@@ -13,7 +13,7 @@ import java.util.List;
 
 
 public class ExhListServlet extends HttpServlet {
-    ExhRepositoryJdbc repository;
+    private ExhRepositoryJdbc repository;
 
     @Override
     public void init(ServletConfig config) throws ServletException {

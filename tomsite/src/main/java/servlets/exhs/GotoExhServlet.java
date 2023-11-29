@@ -14,7 +14,7 @@ import java.util.List;
 
 @WebServlet("/gotoExh")
 public class GotoExhServlet extends HttpServlet {
-    ExhRepositoryJdbc repository;
+    private ExhRepositoryJdbc repository;
 
     @Override
     public void init(ServletConfig config) throws ServletException {

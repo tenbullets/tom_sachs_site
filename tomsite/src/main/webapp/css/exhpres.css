@@ -53,6 +53,7 @@ form {
     width: 1250px;
     padding: 19px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.832);
+    z-index: 6;
 }
 
 .container_1.wid {

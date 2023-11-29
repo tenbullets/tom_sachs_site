@@ -15,8 +15,8 @@ import java.util.List;
 
 @WebServlet("/delExh")
 public class DelExhServlet extends HttpServlet {
-    ServletConfig config;
-    ExhRepositoryJdbc repository;
+    private ServletConfig config;
+    private ExhRepositoryJdbc repository;
 
     @Override
     public void init(ServletConfig config) throws ServletException {

@@ -17,7 +17,7 @@ import java.sql.SQLException;
 public class DelUserServlet extends HttpServlet {
     private UsersRepository usersRepository;
     private DataRepositoryJdbc data;
-    OrdersRepository ordersRepository;
+    private OrdersRepository ordersRepository;
 
     @Override
     public void init(ServletConfig config) throws ServletException {

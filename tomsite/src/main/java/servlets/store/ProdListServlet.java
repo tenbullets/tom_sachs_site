@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class ProdListServlet extends HttpServlet {
-    StoreRepositoryJdbc repository;
+    private StoreRepositoryJdbc repository;
 
     @Override
     public void init(ServletConfig config) throws ServletException {

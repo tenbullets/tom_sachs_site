@@ -12,7 +12,7 @@ import java.io.IOException;
 
 @WebServlet("/delOrder")
 public class DelOrderServlet extends HttpServlet {
-    OrdersRepository repository;
+    private OrdersRepository repository;
 
     @Override
     public void init(ServletConfig config) throws ServletException {

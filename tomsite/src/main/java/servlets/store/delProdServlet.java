@@ -14,9 +14,9 @@ import java.util.List;
 
 @WebServlet("/delProd")
 public class DelProdServlet extends HttpServlet {
-    StoreRepositoryJdbc storeRepository;
-    ServletConfig config;
-    StoreRepositoryJdbc storeRepository1;
+    private StoreRepositoryJdbc storeRepository;
+    private ServletConfig config;
+    private StoreRepositoryJdbc storeRepository1;
 
     @Override
     public void init(ServletConfig config) throws ServletException {

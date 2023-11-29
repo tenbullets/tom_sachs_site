@@ -30,84 +30,88 @@
             <a class="nav_link" href="contacts.html" data-scroll="#">Контакты</a>
             <a class="nav_link" href="log_or_reg.html" data-scroll="#">Аккаунт</a>
         </nav>
+
     </div>
 </header>
     
-    <div class="intro">
-        <div class="container_1">
-            <div class="pre_logo"></div>
-            <div class="logo">
-                <h1 class="logo_text">Заказы</h1>
-            </div>
+<div class="intro">
+    <div class="container_1">
+        <div class="pre_logo" id="point"></div>
+        <div class="logo">
+            <h1 class="logo_text">Заказы</h1>
         </div>
     </div>
+</div>
 
-    <div class="basic">
-        <div class="container_1">
-            <div class="basic_inner">
-                <h1 class="title">Список заказов</h1>
-                <table>
-                    <tr class="str">
-                        <th>Заказ</th>
-                        <th>Статус</th>
-                        <th class="tc">Дата</th>
-                        <th class="tc">Стоимость</th>
-                        <th class="tc">Действие</th>
-                    </tr>
+<div class="basic">
+    <div class="container_1">
+        <div class="basic_inner">
+            <h1 class="title">Список заказов</h1>
+            <table>
+                <tr class="str">
+                    <th>Заказ</th>
+                    <th>Статус</th>
+                    <th class="tc">Дата</th>
+                    <th class="tc">Стоимость</th>
+                    <th class="tc">Действие</th>
+                </tr>
 
-                    <%
-                        List<Order> orders = (List<Order>) request.getAttribute("ordersList");
+                <%
+                    List<Order> orders = (List<Order>) request.getAttribute("ordersList");
 
-                        for (int i = 0; i < orders.size(); i++) {
+                    for (int i = 0; i < orders.size(); i++) {
 
-                    %>
+                %>
 
-                    <tr class="str">
-                        <td>
-                            <form action="gotoOrderAd" method="GET">
-                                <input type="submit" class="goto" value="<%=orders.get(i).getUniqueID()%>">
-                                <input type="hidden" name="uuid" value="<%=orders.get(i).getUniqueID()%>">
-                            </form>
-                        </td>
+                <tr class="str">
+                    <td>
+                        <form action="gotoOrderAd" method="GET">
+                            <input type="submit" class="goto" value="<%=orders.get(i).getUniqueID()%>">
+                            <input type="hidden" name="uuid" value="<%=orders.get(i).getUniqueID()%>">
+                        </form>
+                    </td>
 
-                        <td><%=orders.get(i).getStatus()%></td>
-                        <td  class="tc"><%=orders.get(i).getDate()%></td>
-                        <td  class="tc"><%=orders.get(i).getPrice()%> $</td>
+                    <td><%=orders.get(i).getStatus()%></td>
+                    <td  class="tc"><%=orders.get(i).getDate()%></td>
+                    <td  class="tc"><%=orders.get(i).getPrice()%> $</td>
 
-                        <td  class="tc">
-                            <form action="delOrder" method="GET">
-                                <input type="submit" class="del" value="Завершить">
-                                <input type="hidden" name="uuid" value="<%=orders.get(i).getUniqueID()%>">
-                            </form>
-                        </td>
-                    </tr>
-                    <%
-                        }
-                    %>
+                    <td  class="tc">
+                        <form action="delOrder" method="GET">
+                            <input type="submit" class="del" value="Завершить">
+                            <input type="hidden" name="uuid" value="<%=orders.get(i).getUniqueID()%>">
+                        </form>
+                    </td>
+                </tr>
+                <%
+                    }
+                %>
 
-                </table>
-            </div>
+            </table>
         </div>
     </div>
+</div>
 
-    
 
-    <footer class="footer">
-        <div class="container_1">
-    
-            <div class="footer_inner">
-                <div class="footer_block">
-                    <p class="footer_title_text">Автор Сайта</p>
-                    <a class="footer_main_text" href="https://t.me/zhertvapropagandynolana">telegram</a>
-                    <a class="footer_main_text" href="https://instagram.com/zhertvapropagandynolana?igshid=NTc4MTIwNjQ2YQ==">instagram</a>
-                </div>
-                <div class="footer_block_2">
-                    <img class="block_2_img" src="img/other/footer_img_1.jpg" alt="">
-                </div>
+
+<footer class="footer">
+    <div class="container_1">
+
+        <div class="footer_inner">
+            <div class="footer_block">
+                <p class="footer_title_text">Автор Сайта</p>
+                <a class="footer_main_text" href="https://t.me/zhertvapropagandynolana">telegram</a>
+                <a class="footer_main_text" href="https://instagram.com/zhertvapropagandynolana?igshid=NTc4MTIwNjQ2YQ==">instagram</a>
             </div>
-    
+            <div class="footer_block_2">
+                <img class="block_2_img" src="img/other/footer_img_1.jpg" alt="">
+            </div>
         </div>
-    </footer>
+
+    </div>
+</footer>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+<script src="js/header.js"></script>
 
 </body>
 </html>

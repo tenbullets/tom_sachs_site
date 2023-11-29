@@ -4,7 +4,7 @@ import models.User;
 
 import java.sql.SQLException;
 
-public interface CrudRepository<T> {
+public interface EntityRepository<T> {
 
     boolean findUser(String username, String password);
     boolean findUserByEmail(String email);

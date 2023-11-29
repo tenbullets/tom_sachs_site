@@ -2,6 +2,7 @@ package servlets.reg;
 
 import interfaces.UsersRepository;
 import repository.DataRepositoryJdbc;
+import service.RegServiceImpl;
 import service.SignUpServiceImpl;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -14,13 +15,15 @@ import java.sql.*;
 public class RegServlet extends HttpServlet {
     private UsersRepository usersRepository;
     private DataRepositoryJdbc data;
-    SignUpServiceImpl signUpServiceImpl;
+    private RegServiceImpl regService;
+    private SignUpServiceImpl signUpServiceImpl;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         usersRepository = (UsersRepository) config.getServletContext().getAttribute("userRep");
         data = (DataRepositoryJdbc) config.getServletContext().getAttribute("dataRep");
         signUpServiceImpl = new SignUpServiceImpl(data);
+        regService = new RegServiceImpl();
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -33,7 +36,7 @@ public class RegServlet extends HttpServlet {
         httpSession.setAttribute("isAdmin", false);
         httpSession.setAttribute("authenticated", false);
 
-        String result, status;
+        String result = null, status;
 
         if (usersRepository.findUserByEmail(email)) {
             result = "Пользователь с почтой " + email + " уже зарегистрирован"; status = "Регистрация провалена";
@@ -42,7 +45,7 @@ public class RegServlet extends HttpServlet {
             request.setAttribute("status", status);
             request.getRequestDispatcher("/jsp/result.jsp").forward(request, response);
         } else {
-            if (formIsOk(username, email, password, secondPassword)) {
+            if (regService.formAttached(username, email, password, secondPassword)) {
                 String uniqueID = java.util.UUID.randomUUID().toString();
 
                 try {
@@ -58,17 +61,17 @@ public class RegServlet extends HttpServlet {
                 request.setAttribute("user_email", email);
                 request.getRequestDispatcher("/jsp/account.jsp").forward(request, response);
             } else {
-                result = "Пользователь не зарегистрирован, проверте введенные данные"; status = "Регистрация провалена";
+                status = "Регистрация провалена";
+                if(!regService.usernameValidate(username)) result = "Имя пользователя отсутствует или не подходит";
+                if(!regService.emailValidate(email)) result = "Почта отсутствует или не является электронной почтой";
+                if(!regService.passwordValidate(password)) result = "Пароль отсутствует или не подходит";
+                if(!regService.passwordsMatch(password, secondPassword)) result = "Пароли не совпадают";
 
                 request.setAttribute("resultOfAut", result);
                 request.setAttribute("status", status);
                 request.getRequestDispatcher("/jsp/result.jsp").forward(request, response);
             }
         }
-    }
-
-    public boolean formIsOk(String username, String email, String password, String secondPassword) {
-        return !password.isEmpty() && !username.isEmpty() && password.equals(secondPassword) && !email.isEmpty();
     }
 
 }
