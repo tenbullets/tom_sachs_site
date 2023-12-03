@@ -1,13 +1,9 @@
 package interfaces;
 
-import org.springframework.security.core.parameters.P;
-
 import javax.servlet.http.Part;
 import java.util.List;
 
 public interface AddService {
-
-
     String getDate();
     String setFormat(String rawText);
     String toHtmlFormat(String rawStr);

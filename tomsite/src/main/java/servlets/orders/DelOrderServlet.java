@@ -26,4 +26,5 @@ public class DelOrderServlet extends HttpServlet {
 
         request.getRequestDispatcher("/ordersList").forward(request, response);
     }
+
 }

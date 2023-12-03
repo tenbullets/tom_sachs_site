@@ -2,7 +2,6 @@ package servlets.orders;
 
 import interfaces.OrdersRepository;
 import interfaces.StoreRepository;
-import interfaces.UsersRepository;
 import models.Order;
 import models.Product;
 import repository.StoreRepositoryJdbc;

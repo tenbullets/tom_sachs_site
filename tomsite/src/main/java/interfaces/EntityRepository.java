@@ -5,7 +5,6 @@ import models.User;
 import java.sql.SQLException;
 
 public interface EntityRepository<T> {
-
     boolean findUser(String username, String password);
     boolean findUserByEmail(String email);
     String findUserByUuid(String uuid) throws SQLException;
@@ -15,5 +14,4 @@ public interface EntityRepository<T> {
     boolean isAdmin(String username, String password);
     String returnId(String username);
     User returnUser(String id);
-
 }

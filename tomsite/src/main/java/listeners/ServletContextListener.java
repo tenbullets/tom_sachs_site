@@ -18,7 +18,6 @@ import java.util.List;
 
 @WebListener
 public class ServletContextListener implements javax.servlet.ServletContextListener {
-
     private static final String DB_DRIVER = "org.postgresql.Driver";
     private static final String DB_USER = "postgres";
     private static final String DB_PASSWORD = "qwikWell12";
@@ -54,29 +53,32 @@ public class ServletContextListener implements javax.servlet.ServletContextListe
         servletContext.setAttribute("signUpService", signUpService);
 
 
-        List<Product> products;
+        // Exhibitions and products
+        List<Product> productsList;
         try {
-            products = storeRepository.getAllProduct();
+            productsList = storeRepository.getAllProduct();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        servletContext.setAttribute("products", products);
+        servletContext.setAttribute("products", productsList);
 
-        List<Product> update;
+        List<Exh> exhList;
         try {
-            update = storeRepository.getProdUpdate(storeRepository.getAllProduct());
+            exhList = exhRepositoryJdbc.getExhList();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        servletContext.setAttribute("update", update);
+        servletContext.setAttribute("exhs", exhList);
 
-        List<Exh> list;
+
+        // Update
+        List<Product> storeUpdate;
         try {
-            list = exhRepositoryJdbc.getExhList();
+            storeUpdate = storeRepository.getProdUpdate(storeRepository.getAllProduct());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        servletContext.setAttribute("exhs", list);
+        servletContext.setAttribute("update", storeUpdate);
 
         List<Exh> exhUpdate;
         try {
@@ -85,11 +87,9 @@ public class ServletContextListener implements javax.servlet.ServletContextListe
             throw new RuntimeException(e);
         }
         servletContext.setAttribute("exhUpdate", exhUpdate);
-
      }
 
     @Override
-    public void contextDestroyed(ServletContextEvent servletContextEvent) {
+    public void contextDestroyed(ServletContextEvent servletContextEvent) {}
 
-    }
 }

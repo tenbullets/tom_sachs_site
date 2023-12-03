@@ -1,7 +1,6 @@
 package interfaces;
 
 import models.Exh;
-import models.Product;
 import javax.servlet.http.Part;
 import java.io.IOException;
 import java.sql.Date;

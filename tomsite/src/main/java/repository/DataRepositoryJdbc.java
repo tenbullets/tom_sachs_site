@@ -3,8 +3,6 @@ package repository;
 import interfaces.DataRepository;
 import models.User;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 import java.sql.*;
 

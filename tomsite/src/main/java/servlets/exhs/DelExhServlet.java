@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-
 @WebServlet("/delExh")
 public class DelExhServlet extends HttpServlet {
     private ServletConfig config;
@@ -43,4 +42,5 @@ public class DelExhServlet extends HttpServlet {
             request.getRequestDispatcher("/jsp/result.jsp").forward(request, response);
         }
     }
+
 }

@@ -12,13 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-
 public class AdminRegServlet extends HttpServlet {
     private UsersRepository usersRepository;
     private DataRepositoryJdbc data;
     private SignUpServiceImpl signUpServiceImpl;
     private RegServiceImpl regService;
-
 
     @Override
     public void init(ServletConfig config) throws ServletException {

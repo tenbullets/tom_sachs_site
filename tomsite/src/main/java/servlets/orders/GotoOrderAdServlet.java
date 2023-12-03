@@ -10,7 +10,6 @@ import repository.StoreRepositoryJdbc;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -48,4 +47,5 @@ public class GotoOrderAdServlet extends HttpServlet {
         request.setAttribute("prod", products);
         request.getRequestDispatcher("/jsp/a_order.jsp").forward(request, response);
     }
+
 }

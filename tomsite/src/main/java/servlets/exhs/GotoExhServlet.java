@@ -53,6 +53,6 @@ public class GotoExhServlet extends HttpServlet {
             request.setAttribute("status", status);
             request.getRequestDispatcher("/jsp/result.jsp").forward(request, response);
         }
-
     }
+
 }

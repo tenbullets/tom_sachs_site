@@ -2,7 +2,6 @@ package repository;
 
 import interfaces.ExhRepository;
 import models.Exh;
-import models.Product;
 import org.apache.commons.io.FileUtils;
 
 import javax.servlet.http.Part;

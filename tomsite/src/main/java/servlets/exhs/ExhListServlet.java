@@ -26,6 +26,6 @@ public class ExhListServlet extends HttpServlet {
 
         request.setAttribute("exhList", list);
         request.getRequestDispatcher("/jsp/exhList.jsp").forward(request,response);
-
     }
+
 }
